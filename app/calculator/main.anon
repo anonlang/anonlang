@@ -1,0 +1,102 @@
+;; Currently, only button-click input is accepted. TODO: keyboard and paste support.
+
+layout-path = './layout/main-layout.anon'
+layout = load layout-path
+create-window layout
+
+alias state [
+  alias empty
+  alias first-number [ alias value, alias has-period boolean ]
+  alias operator [ alias value ]
+  alias second-number [ alias value, alias has-period boolean ]
+]
+
+alias current-state state.empty
+
+alias period = '.'
+alias on-number-input [
+  input value ;; Could be number or period.
+  switch current-state [
+    case empty:
+      first-number.value = value
+      first-number.has-period = value == period
+      current-state = first-number
+      layout-display-text.value = value
+    case first-number:
+      if [ first-number.has-period && value == period ] break
+      first-number.has-period = value == period
+      first-number.value = first-number.value ++ value
+      layout.display-text.value = first-number.value
+    case operator:
+      second-number.value = value
+      second-number.has-period = value == period
+      current-state = second-number
+      layout-display-text.value = value
+    case second-number:
+      if [ second-number.has-period && value == period ] break
+      second-number.has-period = value == period
+      second-number.value = second-number.value ++ value
+      layout.display-text.value = second-number.value
+  ]
+]
+
+alias on-operator-input [
+  input value
+  switch current-state [
+    case empty: ;; Do nothing
+    case first-number: 
+      state.operator = value
+      current-state = state.operator
+    case operator:
+      state.operator = value
+    case second-number:
+      on-evaluate-input
+      state.operator = value
+      current-state = state.operator
+  ]
+]
+
+alias on-clear-input [
+  layout.display-text.value = ''
+  state.first-number.value = ''
+  state.operator.value = ''
+  state.second-number.value = ''
+  current-state = state.empty
+]
+
+alias on-evaluate-input [
+  switch current-state [
+    case empty: ;; Do nothing
+    case first-number: ;; Do nothing
+    case operator: ;; Do nothing
+    case second-number:
+      ans = Math.eval [ first-number ++ operator ++ second-number ]
+      layout.display-text.value = ans
+      state.first-number.value = ans
+      state.operator.value = ''
+      state.second-number.value = ''
+      current-state = state.first-number
+  ]
+]
+
+layout [
+  b-0.on-click [ on-number-input b-0.value ]
+  b-1.on-click [ on-number-input b-1.value ]
+  b-2.on-click [ on-number-input b-2.value ]
+  b-3.on-click [ on-number-input b-3.value ]
+  b-4.on-click [ on-number-input b-4.value ]
+  b-5.on-click [ on-number-input b-5.value ]
+  b-6.on-click [ on-number-input b-6.value ]
+  b-7.on-click [ on-number-input b-7.value ]
+  b-8.on-click [ on-number-input b-8.value ]
+  b-9.on-click [ on-number-input b-9.value ]
+  b-period.on-click [ on-operator-input b-period.value ]
+  
+  b-add.on-click [ on-operator-input b-add.value ]
+  b-subtract.on-click [ on-operator-input b-subtract.value ]
+  b-multiply.on-click [ on-operator-input b-multiply.value ]
+  b-divide.on-click [ on-operator-input b-divide.value ]
+  
+  b-clear.on-click [ on-clear-input ]
+  b-equals.on-click [ on-evaluate-input ]
+]

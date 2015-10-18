@@ -1,0 +1,26 @@
+use lib/anon-to-html
+use lib/html-to-pdf
+
+input data-path output-type=html layout-path=./layout/default-layout.anon
+
+data = load data-path
+layout = load layout-path
+
+;; TODO: Use data-binding so that this can be simplified.
+layout [
+  company-logo data.logo
+  to data.to
+  from data.from
+  sales data.sales
+  terms data.terms
+  notes data.notes
+]
+
+html-layout anon-to-html layout
+
+output-name ';data-path;.;output-type;'
+switch output-type [
+  html: create-file output-name html-layout
+  pdf: create-file output-name html-to-pdf[html-layout]
+  default: output 'Error: Invalid output-type. Must be either html or pdf.'
+]

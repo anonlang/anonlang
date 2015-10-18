@@ -1,0 +1,4 @@
+name 'My Sample Calculator'
+version '0.1.0'
+description 'This is just a simple calculator example.'
+author 'Danial Goodwin'

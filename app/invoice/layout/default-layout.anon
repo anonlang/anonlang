@@ -1,0 +1,25 @@
+root col [
+  header row [
+    company-logo image
+    label-section col [
+      snap right
+      label text 'Invoice'
+      date text []
+    ]
+  ]
+  to-from row [
+    text 'To: '
+    to text []
+    text 'From: '
+    from text []
+  ]
+  sales-section row [
+    sales col []
+  ]
+  terms-section row [
+    terms col []
+  ]
+  notes-section row [
+    notes col []
+  ]
+]

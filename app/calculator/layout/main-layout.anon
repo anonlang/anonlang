@@ -1,0 +1,26 @@
+root col [
+  display-section row [ display-text text ]
+  button-section grid [
+    b-clear button [ row 1, col 1 ]
+    b-divide button [ row 1, col 2 ]
+    b-multiply button [ row 1, col 3 ]
+    b-subtract button [ row 1, col 4 ]
+    
+    b-7 button [ row 2, col 1 ]
+    b-8 button [ row 2, col 2 ]
+    b-9 button [ row 2, col 3 ]
+    b-add button [ row 2, col 4, row-span 2 ]
+    
+    b-4 button [ row 3, col 1 ]
+    b-5 button [ row 3, col 2 ]
+    b-6 button [ row 3, col 3 ]
+    
+    b-1 button [ row 4, col 1 ]
+    b-2 button [ row 4, col 2 ]
+    b-3 button [ row 4, col 3 ]
+    b-equals button [ row 4, col 4, row-span 2]
+    
+    b-0 button [ row 5, col 1, col-span 2 ]
+    b-period button [ row 5, col 3 ]
+  ]
+]

@@ -1,0 +1,22 @@
+use 'app'
+
+config [
+  name 'Minimal App Example'
+  version '0.1.0'
+  id 'com.example.myapp'
+  description 'Just a simple minimal app'
+  logo 'res/my-app.svg'
+  release [
+    key 'key/secret-keystore.jks'
+  ]
+  src 'src/'
+  lib 'lib/'
+]
+
+main-page layout [
+  name 'The Main Page'
+  col [
+    hello-text text 'Hello World!', snap center
+    button 'Talk', on-click show hello-text
+  ]
+].show
