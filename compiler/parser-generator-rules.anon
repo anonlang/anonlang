@@ -1,0 +1,3 @@
+root statement output <!-- File automatically generated. -->
+statement TEXTVIEW TEXT output <p>;TEXT;</p>
+;; TODO: Need to handle the case of empty file? And/or empty statement?

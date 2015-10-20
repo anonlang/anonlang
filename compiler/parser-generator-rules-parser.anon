@@ -1,0 +1,40 @@
+;; Convert an Anonlang parse file to a list data structure that can be used for the parser.
+;; The format of parse files should be a list of one or more lines, with each line having
+;; a symbol, then group of space-separated symbol|token, then output keyword, then raw
+;; code that should be output. Terminals can be put between semicolons to get their value for output.
+;; Currently, this allows for symbols to be made up of any characters, except whitespace.
+;; Though, symbols tend to be letters.
+;;
+;; Limitation: Currently, comments are not supported in the parse file.
+
+input parsefile
+
+alias parserule [
+  alias grammar ''
+  alias translation ''
+  alias outputstatement ''
+]
+alias parserules group
+
+loop line in parsefile [
+  alias issymbol boolean true
+  alias isoutput boolean
+  loop character in line [
+    alias t parserule
+    ;; TODO: Add support for line comment here for the parsefile.
+    if character == 'o' [
+      ;; TODO: Check if next characters are 'utput '
+    ] else if character == \s [
+      issymbol false
+    ]
+    if isoutput [
+      t.outputstatement = t.outputstatement ++ character
+    ] else if issymbol [
+      t.symbol = t.symbol ++ character
+    ] else [
+      t.regex = t.regex ++ character
+    ]
+  ]
+]
+
+output parserules

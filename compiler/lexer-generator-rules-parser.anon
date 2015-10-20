@@ -8,16 +8,16 @@
 
 input lexfile
 
-alias lextoken [
+alias lexrule [
   alias symbol ''
   alias regex ''
 ]
-alias lextokens group
+alias lexrules group
 
 loop line in lexfile [
   alias issymbol boolean true
   loop character in line [
-    alias t lextoken
+    alias t lexrule
     ;; TODO: Add support for line comment here for the lexfile.
     if character == \s [
       issymbol false
@@ -29,3 +29,5 @@ loop line in lexfile [
     ]
   ]
 ]
+
+output lexrules
