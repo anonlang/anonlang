@@ -1,0 +1,31 @@
+;; Convert an Anonlang lex file to a list data structure that can be used for the lexer.
+;; The format of lex files should be a list of one or more lines, with each line having
+;; a symbol, then a space, then the regex for that symbol.
+;; Currently, this allows for symbols to be made up of any characters, except whitespace.
+;; Though, symbols tend to be letters.
+;;
+;; Limitation: Currently, comments are not supported in the lex file.
+
+input lexfile
+
+alias lextoken [
+  alias symbol ''
+  alias regex ''
+]
+alias lextokens group
+
+loop line in lexfile [
+  alias issymbol boolean true
+  loop character in line [
+    alias t lextoken
+    ;; TODO: Add support for line comment here for the lexfile.
+    if character == \s [
+      issymbol false
+    ]
+    if issymbol [
+      t.symbol = t.symbol ++ character
+    ] else [
+      t.regex = t.regex ++ character
+    ]
+  ]
+]
