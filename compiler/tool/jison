@@ -1,0 +1,70 @@
+/* description: Parses end executes mathematical expressions. */
+
+/* lexical grammar */
+%lex
+%%
+
+\n+                       return 'NEWLINE'
+\s+                      /* skip whitespace */
+[0-9]+("."[0-9]+)?\b     return 'NUMBER'
+"PI"                     return 'PI'
+"E"                      return 'E'
+\'[a-zA-Z][a-zA-Z0-9]*\' return 'TEXT'
+textview                 return 'TEXTVIEW'
+<<EOF>>                  return 'EOF'
+.                        return 'INVALID'
+
+/lex
+
+/* operator associations and precedence */
+
+%left '+' '-'
+%left '*' '/'
+%left '^'
+%left UMINUS
+
+%start root
+
+%% /* language grammar */
+
+root
+    : statement
+        {return $1;}
+    ;
+
+statement
+    : expressions NEWLINE
+        {return $1;}
+    | expressions EOF
+        {return $1;}
+    ;
+
+expressions
+    : e
+        {return $1;}
+    ;
+
+e
+    : e '+' e
+        {$$ = $1+$3;}
+    | e '-' e
+        {$$ = $1-$3;}
+    | e '*' e
+        {$$ = $1*$3;}
+    | e '/' e
+        {$$ = $1/$3;}
+    | e '^' e
+        {$$ = Math.pow($1, $3);}
+    | '-' e %prec UMINUS
+        {$$ = -$2;}
+    | '(' e ')'
+        {$$ = $2;}
+    | NUMBER
+        {$$ = Number(yytext);}
+    | E
+        {$$ = Math.E;}
+    | PI
+        {$$ = Math.PI;}
+    | TEXTVIEW TEXT
+        {$$ = '<p>' + $2 + '</p>';}
+    ;

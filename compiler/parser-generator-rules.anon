@@ -1,3 +1,8 @@
 root statement output <!-- File automatically generated. -->
+statement BUTTONVIEW TEXT output <button type="button">;TEXT;</button>
+statement comment
 statement TEXTVIEW TEXT output <p>;TEXT;</p>
 ;; TODO: Need to handle the case of empty file? And/or empty statement?
+
+comment LINECOMMENT
+comment BLOCKCOMMENT

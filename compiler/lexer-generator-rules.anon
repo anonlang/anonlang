@@ -1,2 +1,3 @@
+BUTTONVIEW buttonview
 TEXT '[a-zA-Z][a-zA-Z0-9]*'
-TEXTVIEW textview\s
+TEXTVIEW textview
