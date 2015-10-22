@@ -1,0 +1,6 @@
+ALIAS alias
+LBRACKET \[
+NUMBER [0-9]
+OUTPUT output
+RBRACKET \]
+TEXT [a-z]

@@ -5,6 +5,9 @@
 ;; Though, symbols tend to be letters.
 ;;
 ;; Limitation: Currently, comments are not supported in the lex file.
+;;
+;; TODO: Collect a count for each token for how many times it has appeared so far. Or, just count lines by default since that is common.
+
 
 input lexfile
 

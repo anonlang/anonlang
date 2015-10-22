@@ -1,8 +1,23 @@
 root statement output <!-- File automatically generated. -->
-statement BUTTONVIEW TEXT output <button type="button">;TEXT;</button>
 statement comment
-statement TEXTVIEW TEXT output <p>;TEXT;</p>
+statement view
 ;; TODO: Need to handle the case of empty file? And/or empty statement?
 
 comment LINECOMMENT
 comment BLOCKCOMMENT
+
+view buttonview
+view textview
+
+buttonview BUTTONVIEW usertextline output <button type="button">;TEXT;</button>
+buttonview BUTTONVIEW LEFTBRACKET statement RIGHTBRACKET
+
+textview TEXTVIEW usertextline output <p>;TEXT;</p>
+textview TEXTVIEW LEFTBRACKET statement RIGHTBRACKET
+
+usertextline SINGLEQUOTE usertext SINGLEQUOTE
+usertextline SINGLEQUOTE usertext !SINGLEQUOTE error 'Missing single quote'
+usertext TEXT
+usertext WHITESPACE
+usertext usertext TEXT WHITESPACE
+usertext usertext WHITESPACE TEXT

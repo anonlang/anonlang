@@ -1,3 +1,14 @@
-BUTTONVIEW buttonview
-TEXT '[a-zA-Z][a-zA-Z0-9]*'
-TEXTVIEW textview
+ASTERISK \*
+DASH -
+DIVIDE \/
+EQUALS =
+INTEGER [0-9]+
+LEFTBRACKET \[
+NEWLINE \n
+PERIOD .
+PLUS \+
+RIGHTBRACKET \]
+SINGLEQUOTE '
+TEXT [a-zA-Z][a-zA-Z0-9]*
+;; http://stackoverflow.com/questions/3469080/match-whitespace-but-not-newlines-perl
+WHITESPACE [^\S\r\n]+
