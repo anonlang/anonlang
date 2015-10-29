@@ -1,0 +1,9 @@
+use time
+
+alias benchmark [
+  input action
+  start-time = time.now
+  action.run
+  stop-time = time.now
+  output stop-time - start-time
+]

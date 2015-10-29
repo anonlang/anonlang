@@ -1,0 +1,104 @@
+alias page [
+
+]
+
+;; Each layout 'floats' in page.
+alias layout [
+  alias width 100
+  alias height 100
+  alias align
+  alias x
+  alias y
+  alias z ;; Currently, not used.
+  alias background-color
+  alias foreground-color
+  alias background-media
+]
+
+alias grid layout [
+  input row-size col-size
+  row-size
+  col-size
+  row-span
+  col-span
+]
+
+alias row grid [
+  row-size 1
+]
+
+alias col grid [
+  col-size 1
+]
+
+alias view [
+  alias width wrap
+  alias height wrap
+  alias onclick
+  alias onlongclick
+  alias onkeyclick, onkeydown, onkeyup
+  alias onfingerclick, onfingerdown, onfingerup
+  alias oncursorclick, oncursordown, oncursorup
+]
+
+alias textview view [
+  input value
+]
+
+alias buttonview view [
+  input value
+]
+
+;; TODO: Need to handle when text is deleted? Check how other platforms handle this.
+alias inputview view [
+  input value
+  alias ontextchange [
+    input iv new-text
+    output iv.value ++ new-text
+  ]
+]
+
+alias numberinputview inputview [
+  input value
+  alias ontextchange [
+    input iv new-text
+    loop ch new-text [
+      if ch.is-not-number remove
+    ]
+    output iv.value ++ new-text
+  ]
+]
+
+alias emailinputview inputview [
+  input value
+]
+
+alias passwordinputview inputview [
+  input value
+  alias internal-value
+  alias ontextchange [
+    input iv new-text
+    iv.internal-value += new-text
+    output iv.value ++ new-text.replace *
+  ]
+]
+
+;; Show image, gif, video, audio player.
+alias mediaview view [
+  input value
+  alias name
+  alias description
+]
+
+alias chartview view [
+  input value
+]
+
+alias canvasview view [
+  input value
+]
+
+alias style [
+  color
+  shader
+]

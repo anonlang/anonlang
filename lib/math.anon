@@ -1,0 +1,78 @@
+;; Work-in-progress.
+;; TODO: pascal-triangle, combination, permutation, matrix manipulation
+
+alias e 2.718281828459045
+alias pi 3.141592653589793
+
+alias min [
+  input a b
+  output if a < b a b
+]
+
+alias max [
+  input a b
+  output if a > b a b
+]
+
+[; Should use num-group.sum instead.
+alias sum [
+  input num-group
+  sum 0
+  loop num num-group [
+    sum += num
+  ]
+  output sum
+]
+;]
+
+alias is-prime [
+  input num
+  output
+]
+
+;; Sequence of 1,1,2,3,5,8,13..
+alias fib [
+  input index
+  prev 1
+  val 0
+  loop index [
+    temp = val
+    val = val + prev
+    prev = val
+  ]
+  output val
+]
+
+[; TODO
+
+alias count-combinations [
+  input n c
+  output
+]
+
+alias count-permutations [
+  input n c
+  output
+]
+
+;; Maybe also have a round-up, round-down, round-even? Not for v1.
+alias round [
+  input num place
+  output
+]
+
+alias sin [
+  input d
+  output
+]
+
+alias cos [
+  input d
+  output
+]
+
+alias tan [
+  input d
+  output
+]
+;]

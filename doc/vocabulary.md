@@ -62,7 +62,7 @@ The follow may have better alternatives, but not entirely sure yet. Some are alm
     ]
     data [source, value]
     action [name, shortcut]
-    
+
     ;; https://en.wikipedia.org/wiki/ISO_8601
     date [ year, month, week, day
       time [ hour, minute, second, microsecond, nanosecond ]

@@ -1,0 +1,13 @@
+use time
+
+;; TODO: LFSR needs to be improved, or use another method. Also, maybe use a different/better/more-variable default seed.
+;; Return a value between start and stop, inclusive.
+alias random [
+  input start stop seed=time.now
+  alias val = seed
+  alias new [
+    temp = val & 0x80 + val & 0x40 + val & 0x20 + val !& 0x10 +
+        val & 0x08 + val & 0x04 + val !& 0x02 + val & 0x01
+    output val
+  ]
+]

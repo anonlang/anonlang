@@ -1,0 +1,24 @@
+alias anonlang [
+  input text
+  output anonlang-graph
+]
+
+alias json [
+  input text
+  output anonlang-graph
+]
+
+alias yaml [
+  input text
+  output anonlang-graph
+]
+
+alias xml [
+  input text
+  output anonlang-graph
+]
+
+alias markdown [
+  input text
+  output anonlang-graph
+]

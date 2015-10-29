@@ -1,0 +1,56 @@
+;; Each command is seemless for local and web. Defaults to local when no protocol is provided.
+
+[; TODO
+
+alias get [
+  input path
+  output
+]
+
+alias move [
+  input start-path stop-path
+  output
+]
+
+alias copy [
+  input start-path stop-path
+  output
+]
+
+;; Possibly re-use move instead.
+alias rename [
+  input start-path stop-path
+  output
+]
+
+alias add [
+  input path data
+  output
+]
+
+alias remove [
+  input path
+  output
+]
+
+alias about [
+  input path
+  output
+]
+
+alias open [
+  input path
+  output
+]
+
+alias close [
+  input path
+  output
+]
+
+alias diff [
+  input a-path b-path
+  output
+]
+
+;]
