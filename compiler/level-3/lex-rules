@@ -1,3 +1,4 @@
+;; is-use-strict-regex false
 ALIAS alias
 LBRACKET \[
 NUMBER [0-9]

@@ -1,0 +1,9 @@
+;; User-adjustable rules for the language.
+boolean-true true yes
+boolean-false false no
+
+block-start [
+block-stop ]
+
+;; Default to `;` to have single-line comment as `;;` and multi-line comment between `[;` and `;]`.
+comment-identifier ;

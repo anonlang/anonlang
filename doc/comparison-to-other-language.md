@@ -11,7 +11,7 @@ This file shows the similarities of past languages and can be used to help learn
 ## Overall Concept ##
 Even though Anonlang was made in a [mostly] vaccuum, it shares many commonalities of Lisp, Ruby, Haskell, and Ceylon (and a few more commonalities with other past languages). Though, Anonlang wouldn't have been developed if it was just a simple copy-and-paste of other languages. There are some fundamental changes and differences at the lowest levels and highest levels.
 
-Rebol language has very similar language ideas. It seems to started out in the same way, but maybe got too big and lost consistency in the language. Lots of good ideas to simplify language syntax, but maybe
+Rebol language has very similar language ideas. It seems to started out in the same way, but maybe got too big and lost consistency in the language. Lots of good ideas to simplify language syntax, but maybe too much
 
 
 

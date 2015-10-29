@@ -6,14 +6,17 @@ statement view
 comment LINECOMMENT
 comment BLOCKCOMMENT
 
+block statement
+block LEFTBRACKET statement RIGHTBRACKET
+
 view buttonview
 view textview
 
 buttonview BUTTONVIEW usertextline output <button type="button">;TEXT;</button>
-buttonview BUTTONVIEW LEFTBRACKET statement RIGHTBRACKET
+buttonview BUTTONVIEW block
 
 textview TEXTVIEW usertextline output <p>;TEXT;</p>
-textview TEXTVIEW LEFTBRACKET statement RIGHTBRACKET
+textview TEXTVIEW block
 
 usertextline SINGLEQUOTE usertext SINGLEQUOTE
 usertextline SINGLEQUOTE usertext !SINGLEQUOTE error 'Missing single quote'

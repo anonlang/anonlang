@@ -25,10 +25,50 @@ Some describe Anonlang as having the power of Lisp with readability elegance of 
 ## Top Reasons To Use Anonlang ##
 
 ### A joy to program in ###
-Typing confort is a huge part of Anonlang. There is a minimal need of using the shift-key in the core language. To define blocks/scopes, the square brackets are used instead of parenthesis or curly braces. This makes sense considering how much they are used in every program. Similar decision have been made, where the more often used features are easier to type than lesser used features.
+Typing comfort is a huge part of Anonlang. There is a minimal need of using the shift-key in the core language. To define blocks/scopes, the square brackets are used instead of parenthesis or curly braces. This makes sense considering how much they are used in every program. Similar decision have been made, where the more often used features are easier to type than lesser used features.
 
 ### Quick to learn and get started ###
 There are just a few general rules to the language. Also, it's just a small download to run Anonlang programs directly on your computer.
+
+
+- Three data types:
+  - `boolean` which can be `true` or `false`
+  - `number` integer or floating, this keeps track of sig figs used
+  - `text` is always within single quotes, ex: `'my text'`
+    - A variable can be included in text by surrounding it with semi-colons, ex: `hi ;name;!`]
+    - Concat text using `++`
+
+- Single-line comments start with `;;`
+- Multi-line comments are between `[;` and `;]`
+
+
+#### Keywords ###
+
+    alias ;; Lazy-assign value
+    loop
+
+#### Libraries ###
+
+##### App #####
+
+    config [
+      name
+      description
+    ]
+
+##### GUI #####
+
+    page
+    layout
+    style
+    grid
+    row
+    col
+    textview
+    buttonview
+    inputview
+    numberinputview
+    mediaview
 
 
 
@@ -42,7 +82,5 @@ Some ideas about possible generalized axioms:
 
 
 
- 
+
 <!-- Design Philosophy: Re-using common syntax is NOT a requirement. -->
-
-
