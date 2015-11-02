@@ -1,0 +1,38 @@
+
+
+alias group [
+  alias contains [
+    input g
+    output
+  ]
+  alias index-of [
+    input g e
+    output
+  ]
+  alias indexs-of [
+    input g e
+    output
+  ]
+  alias last-index-of [
+    input g e
+    output
+  ]
+  alias fill [
+    input g val
+    output
+  ]
+  alias map [
+    input g action
+    loop e g [
+      action g e
+    ]
+    output g
+  ]
+  alias filter [
+    input g f
+    loop e g [
+      f g e
+    ]
+    output g
+  ]
+]

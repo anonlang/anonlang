@@ -1,0 +1,60 @@
+alias number [
+  alias bytes byte-group [
+    size = 1
+  ]
+  alias value
+
+  alias add number [
+    input a b
+    output a + b
+    output-lisp '(+ ;a; ;b;)'
+  ]
+  alias add [
+    input num-group
+    output num-group.sum
+  ]
+  alias sub [
+    input a b
+    output a - b
+    output-lisp '(- ;a; ;b;)'
+  ]
+  alias mul number [
+    input a b
+    output a * b
+    output-lisp '(* ;a; ;b;)'
+  ]
+  alias mul number [
+    input num-group
+    output num-group.product
+  ]
+  alias div [
+    input a b
+    output a / b, a % b
+    ;; TODO: Figure out how to make tuple in Lisp.. dunno about the following.
+    output-lisp '( (/ ;a; ;b;) (% ;a; ;b;) )'
+  ]
+
+
+  alias is-negative boolean [
+    input num
+    output num < 0
+  ]
+  alias get-sign number [
+    input num
+    output num == 0 0; is-negative num -1; 1
+  ]
+
+  alias integer [
+
+  ]
+  alias real [
+
+  ]
+  alias prime [
+    alias is-prime boolean [
+      input num
+      output
+    ]
+  ]
+
+]

@@ -5,5 +5,12 @@ boolean-false false no
 block-start [
 block-stop ]
 
-;; Default to `;` to have single-line comment as `;;` and multi-line comment between `[;` and `;]`.
+;; Default single-line comment is `;;` and multi-line comment between `[;` and `;]`.
 comment-identifier ;
+
+
+bits-in-byte 8
+bits-in-address 64
+
+;; Default `int` and `uint` size. This doesn't affect other integers sizes like `int8` and `int64`
+bits-in-int 32

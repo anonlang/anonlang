@@ -21,7 +21,7 @@ More eventual ideas, maybe:
     ad ;; Nah, don't make a big deal of this. Maybe we could never have ads.
     ai
     billing
-    build
+    build ;; Or, make
     cache
     concurrent
     crypto ;; Or, call it security?
@@ -37,10 +37,8 @@ More eventual ideas, maybe:
       trace
     ]
     display
-    faker
     game-2d
     game-3d
-    generator
     layout [
       animation
       menu
@@ -69,12 +67,30 @@ More eventual ideas, maybe:
     network
     platform
     protocol
+    random [ ;; Need a verb? generate, create, new..
+      address ;; street-address
+      business-idea
+      business-name
+      cs-idea
+      email
+      image [input width height]
+      name
+      number [input min max]
+      phone-number [input country-iso=us]
+      text [input num-chars]
+      username
+      uuid ;; Not sure that this is the right place..
+    ]
     sensor [
       temperature
       humidity
       motion
     ]
     ssh
+    storage [
+      internal
+      external
+    ]
     system
 
 

@@ -1,0 +1,31 @@
+
+alias text [
+  alias startsWith [
+    input t
+    output
+  ]
+  alias endsWith [
+    input t
+    output
+  ]
+  alias contains [
+    input t
+    output
+  ]
+  alias repeat [
+    input t count
+    output
+  ]
+  alias slice [
+    input t start stop
+    output
+  ]
+  alias index-of [
+    input t f
+    output
+  ]
+  alias last-index-of [
+    input t f
+    output
+  ]
+]

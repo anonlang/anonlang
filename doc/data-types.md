@@ -1,5 +1,7 @@
 # Data Types in Anonlang #
 
+TODO: Maybe take notes from D: http://dlang.org/type.html
+
 ## Core data types ##
 
 - 'byte' for data
@@ -8,7 +10,7 @@
   - 'integer' for automatic rounding
   - 'float' for real numbers
 - 'text' for string of alpha-numeric character
-  
+
 
 
 ## Additional data types provided by plugins ##
@@ -50,10 +52,10 @@
       isTrue value != 0x0000
     ]
     alias text character-group []
-    
+
     alias bit-group byte-group [
       value [ default 0x00000000, size 0x04 ]
-      set [ 
+      set [
         input index, val
       ]
       get [
@@ -73,5 +75,5 @@
       value [ default unknown ]
       isTrue value == true
     ]
-    
+
 Note: Each of the types has a function for `isTrue()` so that it would work simply in a conditional without manually writing code testing equal to true. Other user-defined types can also have that method to have for simpler conditional checks.
