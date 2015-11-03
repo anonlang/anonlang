@@ -1,0 +1,13 @@
+use gui
+
+alias main-layout layout [
+  col [
+    text-view 'Odot' [
+      font-size 2em
+    ]
+    input-view [
+      hint 'Type a task'
+    ]
+    tasks col []
+  ]
+]

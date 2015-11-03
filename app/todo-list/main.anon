@@ -1,0 +1,36 @@
+config [
+  name 'Odot'
+  description 'Simple todo list'
+]
+
+use ./db.anon
+use ./main-layout.anon
+use ./task-model.anon
+
+use gui
+
+show main-layout
+
+main-layout.on-submit [
+  input iv ;; input-view
+  new-task = task [ iv.value.trim date.now ]
+  ;;new-task = task.new iv.value.trim date.now
+  db.tasks.add new-task
+  iv.value = ''
+]
+
+;; Automatically bind views and db table data.
+;; bind main-layout.tasks db.tasks
+
+;; Manually bind with template
+alias sorted-tasks db.tasks.sort.down date ;; Sort tasks by date decreasing (newest first)
+bind v in main-layout.tasks, t in sorted-tasks [
+  v = row [
+    text-view t.description
+    text-view t.created-date
+    button-view 'X' [
+      align right
+      on-click [ db.tasks.remove t ]
+    ]
+  ]
+]

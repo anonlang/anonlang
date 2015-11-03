@@ -1,0 +1,16 @@
+use ./task-model.anon
+
+alias db [
+  alias tasks task-group [
+    add [
+      input a-task
+      ;; Optionally also add in persistent storage
+      super.add a-task
+    ]
+    remove [
+      input a-task
+      ;; Optionally also remove in persistent storage
+      super.remove a-task
+    ]
+  ]
+]

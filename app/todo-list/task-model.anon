@@ -1,0 +1,20 @@
+use date
+
+alias task [
+  input a-desc a-date
+
+  description text = a-desc
+  created-date date = a-date
+
+  output this
+
+[;
+  alias new [
+    input description date
+    this.description = description
+    this.date = date
+    output this
+  ]
+;]
+
+]
