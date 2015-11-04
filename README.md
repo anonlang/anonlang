@@ -18,7 +18,7 @@ Some describe Anonlang as having the power of Lisp with readability elegance of 
     alias root layout [
       text 'Hello, World!'
     ]
-    create-window root
+    show-window root
 
 
 
@@ -42,34 +42,49 @@ There are just a few general rules to the language. Also, it's just a small down
 - Multi-line comments are between `[;` and `;]`
 
 
-#### Keywords ###
+#### Keywords ####
 
-    alias ;; Lazy-assign value
-    loop
-
-#### Libraries ###
-
-##### App #####
-
-    config [
-      name
-      description
+    alias get-current-time date.now.time ;; Create lazy pointer to something without running it
+    alias nodes node-group [
+      node [ 'en', 'hello' ]
+      node [ 'es', 'hola' ]
+      node [ 'jp', 'konnichiwa' ]
     ]
 
-##### GUI #####
+    loop [ [;Do something;] ] ;; Loop forever
+    loop 5 [ [;Do something;] ] ;; Loop 5 times
+    loop node in nodes [ visit node ] ;; Loop over each item
+    loop is-wait [ sleep 500 ] ;; Loop until is-wait is false, aka while is-wait is true
 
-    page
-    layout
-    style
-    grid
-    row
-    col
-    textview
-    buttonview
-    inputview
-    numberinputview
-    mediaview
 
+
+## App Lifecycle ##
+
+Apps have a simple life-cycle:
+
+    start
+      |
+      V
+    stop
+
+Apps with GUI have:
+
+    start
+      |
+      V
+    show <--+
+      |     |
+      V     |
+    hide ---+
+      |
+      V
+    stop
+
+Though, simple apps (or scripts) don't need to worry about that:
+
+    ;; A simple app
+    input a
+    output 'Hello, ;a;!'
 
 
 ## Background ##

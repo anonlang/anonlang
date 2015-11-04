@@ -37,6 +37,9 @@ More eventual ideas, maybe:
       trace
     ]
     display
+    event-stream [ ;; Things in Anonlang already can be 'rx' without the equals sign.
+      count-received
+    ]
     game-2d
     game-3d
     layout [
@@ -74,6 +77,10 @@ More eventual ideas, maybe:
       cs-idea
       email
       image [input width height]
+      quote [
+        tag [albert-einstein, productivity, love, oscar-wilde, sarcasm, chuck-norris, business, dev, computer, money, meme]
+        output the-quote author tags id sources
+      ]
       name
       number [input min max]
       phone-number [input country-iso=us]

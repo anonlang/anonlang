@@ -1,18 +1,34 @@
-alias page [
+;; Ideas for future features: http://www.w3.org/TR/2010/WD-html5-20100624/webappapis.html#event-handlers-on-elements-document-objects-and-window-objects
 
+alias page [
+  ;; Lifecycle
+  ;; - Need to decide between start/stop, create/destroy, show/hide, resume/pause
+  alias on-create []
+  alias on-show []
+  alias on-focus-change [ input p is-focus ]
+  alias on-hide []
+  alias on-destroy []
+  alias layouts layout-group []
+  alias views view-group []
 ]
 
 ;; Each layout 'floats' in page.
 alias layout [
+  private alias internal-view view
+  alias parent-layout layout ;; Is there a more technical term than parent?
+  alias a-style style
+  alias tags tag-group
+  alias show [input l]
+  alias hide [input l]
+  alias align [default = center]
   alias width 100
   alias height 100
-  alias align
   alias x
   alias y
   alias z ;; Currently, not used.
   alias background-color
-  alias foreground-color
-  alias background-media
+  alias on-scroll [ input l x-offset y-offset ]
+  alias on-resize [ input l x y ]
 ]
 
 alias grid layout [
@@ -21,46 +37,80 @@ alias grid layout [
   col-size
   row-span
   col-span
+  alias layouts layout-group []
+  alias views view-group []
 ]
 
 alias row grid [
   row-size 1
+  alias on-scroll [ input l x-offset ]
 ]
 
 alias col grid [
   col-size 1
+  alias on-scroll [ input l y-offset ]
 ]
 
 alias view [
-  alias width wrap
-  alias height wrap
-  alias onclick
-  alias onlongclick
-  alias onkeyclick, onkeydown, onkeyup
-  alias onfingerclick, onfingerdown, onfingerup
-  alias oncursorclick, oncursordown, oncursorup
+  alias parent-layout layout ;; Is there a more technical term than parent?
+  alias tags tag-group
+  alias styl style
+  alias show []
+  alias hide []
+  alias align [default = left]
+  alias width [default = wrap]
+  alias height [default = wrap]
+  alias background-color
+  alias foreground-color
+  alias background-media
+  ;; Also good for accessibility.
+  alias on-focus-change [ input v is-focus ]
+  alias on-select
+  alias on-click
+  alias on-double-click ;; Based on single click, but maybe common enough for its own name
+  ;; Maybe change/combine 'right' and 'long' to something like on-context-click, on-meta-click, on-alt-click, on-shift-click, on-context-menu
+  alias on-right-click
+  alias on-long-click
+  alias on-key-click, on-key-down, on-key-up
+  ;; Sidenote: There is an expected(?) difference between finger click dragging on screen and mouse pointer click dragging on screen. Though should there be?
+  alias on-finger-click, on-finger-down, on-finger-up
+  ;; Note: 'cursor' could get confused with the vertical bar that marks where keyboard input is going to go.
+  ;; Perhaps, use 'mouse' instead even though it isn't always a mouse? Maybe 'pointer'?
+  alias on-cursor-click, on-cursor-down, on-cursor-up, on-cursor-in, on-cursor-out, on-cursor-move
 ]
 
-alias textview view [
+alias text-view view [
   input value
 ]
 
-alias buttonview view [
+alias button-view text-view [
   input value
+  background-image = media.button
+  alias on-down []
+  alias on-up []
 ]
 
 ;; TODO: Need to handle when text is deleted? Check how other platforms handle this.
-alias inputview view [
+alias input-view view [
   input value
-  alias ontextchange [
+  alias on-text-change [
     input iv new-text
     output iv.value ++ new-text
   ]
+  alias on-sumbit [
+    ;; TODO: Focus next input-view
+  ]
+  ;; Maybe change paste/cut/copy to not have 'on-' before it so that super can be called at any time, thus allowing code for before/after.
+  alias on-paste []
+  alias on-cut []
+  alias on-copy []
+  ;; Is this really needed? Maybe just have as internal?
+  alias on-error
 ]
 
-alias numberinputview inputview [
+alias number-input-view input-view [
   input value
-  alias ontextchange [
+  alias on-text-change [
     input iv new-text
     loop ch new-text [
       if ch.is-not-number remove
@@ -69,14 +119,14 @@ alias numberinputview inputview [
   ]
 ]
 
-alias emailinputview inputview [
+alias email-input-view input-view [
   input value
 ]
 
-alias passwordinputview inputview [
+alias password-input-view input-view [
   input value
   alias internal-value
-  alias ontextchange [
+  alias on-text-change [
     input iv new-text
     iv.internal-value += new-text
     output iv.value ++ new-text.replace *
@@ -84,21 +134,44 @@ alias passwordinputview inputview [
 ]
 
 ;; Show image, gif, video, audio player.
-alias mediaview view [
+alias media-view view [
   input value
   alias name
   alias description
 ]
 
-alias chartview view [
+alias chart-view media-view [
   input value
 ]
 
-alias canvasview view [
+alias canvas-view view [
   input value
 ]
+
+;; Hmm, to use open/close or show/hide...?
+alias prompt [
+  alias open []
+  alias close []
+  alias on-open
+  alias on-close
+]
+
+;; Hmm, to use ok/cancel or positive/negative...?
+;; May also need to fit neutral in there..?
+alias alert-prompt prompt [
+  alias on-ok []
+  alias on-cancel []
+]
+
+;; Maybe not because too many varieties for now and no common one for real apps?
+alias input-prompt []
 
 alias style [
   color
   shader
 ]
+
+;; Attribute alias
+@alias draggable
+@alias drag-view
+@alias drag-location
