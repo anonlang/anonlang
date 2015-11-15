@@ -1,6 +1,6 @@
 alias number [
   alias bytes byte-group [
-    size = 1
+    size 1
   ]
   alias value
 

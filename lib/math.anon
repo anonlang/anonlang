@@ -4,9 +4,38 @@
 alias e 2.718281828459045
 alias pi 3.141592653589793
 
-alias min [
+alias abs [
+  input a
+  output if a < 0 -a a
+]
+
+alias gcd [
   input a b
-  output if a < b a b
+  output if b == 0 a gcd [b, a % b]
+]
+
+alias hypot [
+  input num-group
+  alias s
+  loop i in num-group [
+    s += i.pow 2
+  ]
+  [; Alternatively
+  num-group [
+    map i -> i.pow 2
+  ].sum.root 2
+  ;]
+  input s.root 2
+]
+
+alias ln [
+  input a
+  output log [e, a]
+]
+
+alias log [
+  input base=10 a
+  output a ;; TODO
 ]
 
 alias max [
@@ -14,7 +43,30 @@ alias max [
   output if a > b a b
 ]
 
+alias min [
+  input a b
+  output if a < b a b
+]
+
+;; Alternatively, use `number.pow number`
+alias pow [
+  input a b
+  output a.pow b
+]
+
+;; Alternatively, use `number.root number`
+alias root [
+  input a b
+  output a.root b
+]
+
+alias solve [
+  input e v o
+  output ;; TODO
+]
+
 [; Should use num-group.sum instead.
+;; Alternatively, use `number.add number`
 alias sum [
   input num-group
   sum 0
@@ -55,9 +107,14 @@ alias count-permutations [
   output
 ]
 
-;; Maybe also have a round-up, round-down, round-even? Not for v1.
+;; Maybe also have a round-up, round-down, round-even? Not for v1. Rounding up and down could be confusing for negative numbers. Maybe use round-to-zero? round-to-infinity?
 alias round [
-  input num place
+  input num place=1
+  output
+]
+
+alias round-to-even [
+  input num place=1
   output
 ]
 

@@ -1,4 +1,7 @@
 ;; User-adjustable rules for the language.
+
+alias-visibility private
+
 boolean-true true yes
 boolean-false false no
 

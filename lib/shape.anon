@@ -1,0 +1,30 @@
+;; More specifically, this file is holding Euclidean 2D shapes.
+
+alias circle [
+  input r=1 x=0 y=0
+  alias radius r
+  alias diameter r.mul 2
+  alias area math.pi.mul r.pow 2
+]
+
+alias triangle [
+
+]
+
+alias rectangle [
+  input x1 y1 x2=0 y2=0
+  alias width x1 - x2
+  alias height y1 - y2
+  alias area width.mul height
+]
+
+alias ngon [
+  input num-sides r=1 x=0 y=0
+  alias num-sides num-sides
+  alias radius r
+  ;; TODO: Double-check this.
+  alias inside-angle-sum 180.times num-sides.minus 2
+  alias inside-angle inside-angle-sum.divide num-sides
+  alias outside-angle 360.sub inside-angle
+  alias area ;; TODO: Find the equation for this.
+]

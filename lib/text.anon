@@ -1,31 +1,72 @@
-
 alias text [
-  alias startsWith [
-    input t
-    output
+  alias chars character-group [
+    size 1
+    alias memory
   ]
-  alias endsWith [
-    input t
-    output
-  ]
-  alias contains [
-    input t
-    output
-  ]
-  alias repeat [
-    input t count
-    output
-  ]
-  alias slice [
-    input t start stop
-    output
+
+  alias size chars.size
+  alias memory chars.memory
+
+  alias format [
+    input args
+    output ;; TODO
   ]
   alias index-of [
     input t f
-    output
+    output ;; TODO
+  ]
+  alias is-contain [
+    input t
+    output ;; TODO
+  ]
+  alias is-empty [
+    output ;; TODO
+  ]
+  alias is-end-with [
+    input t
+    output ;; TODO
+  ]
+  alias is-palindrome [
+    output ;; TODO
+  ]
+  alias is-start-with [
+    input t
+    output ;; TODO
   ]
   alias last-index-of [
     input t f
-    output
+    output ;; TODO
+  ]
+  alias lower [
+    output ;; TODO
+  ]
+  alias repeat [
+    input t count
+    output ;; TODO
+  ]
+  alias replace [
+    input old new
+    output ;; TODO
+  ]
+  alias replace-all [
+    input old new
+    output ;; TODO
+  ]
+  alias reverse [
+    output ;; TODO
+  ]
+  alias slice [
+    input t start stop
+    output ;; TODO
+  ]
+  alias split [
+    input r
+    output ;; TODO
+  ]
+  alias trim [
+    output ;; TODO
+  ]
+  alias upper [
+    output ;; TODO
   ]
 ]

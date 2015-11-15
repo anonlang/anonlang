@@ -44,6 +44,10 @@ There are just a few general rules to the language. Also, it's just a small down
 
 #### Keywords ####
 
+    alias, loop
+
+    Examples:
+
     alias get-current-time date.now.time ;; Create lazy pointer to something without running it
     alias nodes node-group [
       node [ 'en', 'hello' ]
@@ -53,8 +57,15 @@ There are just a few general rules to the language. Also, it's just a small down
 
     loop [ [;Do something;] ] ;; Loop forever
     loop 5 [ [;Do something;] ] ;; Loop 5 times
+    loop count in 1..5 [ output count ] ;; Loop with reference to iteration
     loop node in nodes [ visit node ] ;; Loop over each item
+    loop ch in 'hello' [ output ch ] ;; Loop over each character
+    loop wd in 'hello world' by r'\w' [output wd] ;; Loop over word tokens
+    alias tokens 'hello world'.split ' '
+    loop wd in tokens [output wd] ;; Loop over word tokens
     loop is-wait [ sleep 500 ] ;; Loop until is-wait is false, aka while is-wait is true
+
+    loop-parallel [] ;; When order of calls doesn't matter.
 
 
 
@@ -85,6 +96,27 @@ Though, simple apps (or scripts) don't need to worry about that:
     ;; A simple app
     input a
     output 'Hello, ;a;!'
+
+
+
+## Paradigm ##
+Anonlang is not based on any language, but it does share many commonalities with others.
+
+### Everything is a Everything ###
+
+- A variable is a function with zero inputs and one output.
+- A function is a class with code on initialization and optional output. Or, another way, a class is a function that returns itself.
+- Classes connecting to one another is the basis for a graph data structure, which in turn is the base for trees and linked lists. Arrays could be simulated with a graph or linked list, not paying attention to performance.
+
+These are all first-class citizens in Anonlang.
+
+### What If? ###
+
+- What if there was a programming language where you don't have to worry about performance? Quite different without many different data structures and algorithms?
+- What if there was a programming language where the language was designed after the modern standard keyboard layout?
+  - Use square bracket more than curly brace and parenthesis?
+- What if there was a programming language that had a minimum number of tokens to type? What would it look like? Likely, somewhat declarative.
+
 
 
 ## Background ##

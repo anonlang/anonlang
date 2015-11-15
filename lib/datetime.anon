@@ -1,0 +1,30 @@
+date [
+  alias year number
+  alias month number
+  alias week-of-year number
+  alias day-of-year number
+  alias day-of-month number
+  alias day-of-week number
+
+  alias now [
+    output ';year;-;month;-;day;'
+  ]
+]
+
+time [
+  alias hour number
+  alias minute number
+  alias second number
+  alias millisecond number
+  alias nanosecond number
+
+  alias now [
+    output ';hour;-;minute;-;second;-;millisecond;'
+  ]
+]
+
+datetime [
+  alias now [
+    output date.now ++ '-' ++ time.now
+  ]
+]
