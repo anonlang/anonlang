@@ -1,71 +1,114 @@
 alias text [
   alias chars character-group [
-    size 1
-    alias memory
+    size 0
+    encoding 'utf-8'
   ]
 
   alias size chars.size
-  alias memory chars.memory
 
+  ;;alias letters 'abcdefghijklmnopqrstuvwxyz'
+  alias digits '0123456789'
+  ;;alias hexdigits '0123456789abcdef'
+  alias whitespace ' \n\r\t\v\f'
+
+
+  [; Return index of first match, otherwise -1. ;]
+  alias find [
+    input match-text
+    output ;; TODO
+  ]
+  [; Return indexes of all matches, otherwise empty number-group. ;]
+  alias find-all [
+    input match-text
+    output ;; TODO
+  ]
   alias format [
     input args
     output ;; TODO
   ]
-  alias index-of [
-    input t f
-    output ;; TODO
-  ]
+  [; Return true if a match is found, otherwise false. ;]
   alias is-contain [
-    input t
+    input match-text
     output ;; TODO
   ]
+  [; Return true if size is 0, otherwise false. ;]
   alias is-empty [
-    output ;; TODO
+    output size == 0
   ]
+  [; Return true if this text's ending matches the input, otherwise false. ;]
   alias is-end-with [
-    input t
+    input match-text
     output ;; TODO
   ]
+  [; Return true if this text is the same forward and backwards, otherwise false. ;]
   alias is-palindrome [
-    output ;; TODO
+    mid = size / 2
+    loop i in 0..mid [
+      if chars.i != chars[size - 1 - i] output false
+    ]
+    output true
   ]
+  [; Return true if this text's starting matches the input, otherwise false. ;]
   alias is-start-with [
-    input t
-    output ;; TODO
+    input match-text
+    if match-text.size > size output false
+    loop i in 0..match-text.size [
+      if match-text.i != chars.i output false
+    ]
+    output true
   ]
+  [; Return text with each text in input group appended. ;]
+  alias join [
+    input text-group separator-text='' start-text='' end-text=''
+    t-output
+    loop t in text-group [
+      t-output ++= t
+    ]
+    output t-output
+  ]
+  ;; TODO: Why is last-index-of needed? Do other functions cover the use cases?
   alias last-index-of [
-    input t f
+    input match-text
     output ;; TODO
   ]
+  [; Return text that is all lowercase. ;]
   alias lower [
     output ;; TODO
   ]
+  alias parse [
+    input regex
+    output split regex
+  ]
+  [; Return this text repeated count times. ;]
   alias repeat [
-    input t count
+    input count
     output ;; TODO
   ]
   alias replace [
-    input old new
+    input match-text new-text
     output ;; TODO
   ]
   alias replace-all [
-    input old new
+    input match-text new-text
     output ;; TODO
   ]
   alias reverse [
     output ;; TODO
   ]
   alias slice [
-    input t start stop
+    input start stop
     output ;; TODO
   ]
   alias split [
-    input r
+    input regex=' '
     output ;; TODO
   ]
+  ;; alias to-json [] ;; Use json-text lib instead.
+  ;; alias to-xml [] ;; Use xml-text lib instead.
   alias trim [
     output ;; TODO
   ]
+  [; Return text that is all uppercase. ;]
   alias upper [
     output ;; TODO
   ]
