@@ -31,6 +31,13 @@ alias text [
     input match-text
     output ;; TODO
   ]
+  [; Return true if this text is a valid number, otherwise false. ;]
+  alias is-number [
+    ;; First char is optionally a dash
+    ;; Up to one period allowed. ;; TODO: Need to consider i18n?
+    ;; All other characters should be a digit. ;; TODO: Support scientific notation? And, ignore optional/clarifying underscores?
+    output ;; TODO
+  ]
   [; Return true if size is 0, otherwise false. ;]
   alias is-empty [
     output size == 0
@@ -92,21 +99,42 @@ alias text [
     input match-text new-text
     output ;; TODO
   ]
+  ;; TODO: Could alternative syntax be text[size..0]?
   alias reverse [
-    output ;; TODO
-  ]
-  alias slice [
-    input start stop
-    output ;; TODO
+    text-output
+    loop i in 0..size [
+      text-output ++= chars[size - 1 - i]
+    ]
+    output text-output
   ]
   alias split [
     input regex=' '
+    text-group-output
+    loop i in 0..size [
+      if chars[i..] is-start-with regex
+    ]
+    output text-group-output
+  ]
+  ;; TODO: Should negative index be allowed, like in Python and JavaScript?
+  ;; TODO: Should index greater than size automatically be converted to size?
+  ;; TODO: Better name?
+  ;; Alternative syntax is to use text[start..stop].
+  alias subtext [
+    input start stop=size
     output ;; TODO
   ]
   ;; alias to-json [] ;; Use json-text lib instead.
   ;; alias to-xml [] ;; Use xml-text lib instead.
   alias trim [
-    output ;; TODO
+    start, stop
+    loop i in 0..size && chars.i.is-whitespace [
+      start = i
+    ]
+    loop i in [size - 1]..0 && chars.i.is-whitespace [
+      stop = i
+    ]
+    if start < stop output chars[start..stop]
+    output ''
   ]
   [; Return text that is all uppercase. ;]
   alias upper [
