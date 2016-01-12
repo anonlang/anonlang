@@ -1,0 +1,63 @@
+;; Automatically creates UPPER_CASE token for each keyword.
+keyword
+  layout
+    attribute align height:[min max] width:[min max]
+    grid-layout ;; From this: frame-layout, list-view
+      style
+        card
+        stagger
+      list-layout
+        style
+          swipe
+      tab-layout ;; Or, replace this with navigation-layout?
+    sidebar-layout
+    toolbar-layout
+      style
+        collapse
+        large
+  view
+    button-view
+    file-view ;; Or, file-explorer-view? Used to pick files for file-input-view, or other actions.
+      style
+        grid
+        list
+    heirarchy-view ;; Aka, breadcrumbs
+
+    input-view
+      email-input-view
+      file-input-view
+      password-input-view
+    media-view
+      progress-view
+    search-view ;; Mainly to go in a toolbar-layout?
+    select-view ;; Or, choice-view? choose-view? picker-view? there should be something better. Might be based off a list-layout? But, this would be called a 'view' because it may should something (box, dropdown area/arrow) even with no data added.
+      attribute
+        get-selected
+      style
+        dropdown
+        multiple
+        radio
+      date-select-view
+        style
+          day
+          month
+          year
+      number-select-view
+        attribute min max interval
+      time-select-view
+        style
+          hour
+          minute
+    text-view
+    web-view ;; Don't need for the ultimate version of Art lang, right? Maybe call it dynamic-view? which wouldn't work in strict mode.
+
+grammar
+  BUTTON_VIEW [VALUE ACTION?] VIEW_BODY?
+  INPUT_VIEW [LABEL VALUE?] VIEW_BODY?
+  TEXT_VIEW VALUE? VIEW_BODY?
+
+  VIEW_BODY
+  - ACTION
+  - ATTRIBUTE
+  - STYLE
+  - VALUE
