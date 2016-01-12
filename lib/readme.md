@@ -7,7 +7,7 @@ Usage can be declared at the top of files or within any scope that it's needed i
 Raw thoughts:
 
 - How about an 'app' lib?
-  - Maybe don't need this because everything is an app?
+  - Maybe don't need this because everything is an app? Though, even libs? Do we really need to differentiate between the two? It could help prevent circular dependencies.
   - Maybe a 'publish' lib instead?
     - This would recognize more config values.
 - Something related to 'file' lib would be 'convert' and 'merge'.
@@ -20,7 +20,7 @@ More eventual ideas, maybe:
 
     ad ;; Nah, don't make a big deal of this. Maybe we could never have ads.
     ai
-    billing
+    billing ;; Or, call it payment?
     build ;; Or, make
     cache
     concurrent
@@ -66,7 +66,7 @@ More eventual ideas, maybe:
       microphone
       speaker
     ]
-    money
+    money ;; Or, call it currency?
     network
     platform
     protocol

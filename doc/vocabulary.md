@@ -29,10 +29,11 @@ Pixels shouldn't be used as a measurement because they are always changing too m
       - `file-input-view` maybe, if file-uploading gets more popular, though, there are many different ways to show this.
     - `media-view` possibly to include support for different image, gif, video, and audio.
 - `style`
-  - `bg-color` for background color
+  - `bg-color` for background color (this can be used as a backup for bg-media)
   - `fg-color` for foreground color, like for text
   - `bg-media` for background texture/image/video/gif/audio or other supported media
 - `action`
+  - `on-select`, `on-focus`
   - `on-click` could mean mouse click, finger tap, or enter key press when item is focused
   - `on-long-click`
   - `on-key-click`, `on-key-down`, `on-key-up`
@@ -51,7 +52,6 @@ The follow may have better alternatives, but not entirely sure yet. Some are alm
       price
       license
     ]
-    meta
     layout [
       visibility [show, hide]
       transparency [0..100]
