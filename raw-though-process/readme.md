@@ -3,7 +3,7 @@ Everything in this directory is still a work-in-progress. Nothing is finalized.
 
 As things are thought through, they may eventually be moved into the final documentation and library. Feel free to comment.
 
-Many ideas here should be stretch goals and under the paradigm assumption that speed and size don't need to be a consideration. Imagine a programming language being built fifty years from now. The biggest benefit may be developer/user productivity, we don't need to worry too much about difficulty of implementation.
+Many ideas here should be stretch goals and under the paradigm assumption that speed and size don't need to be a consideration. Imagine a programming language being built fifty years from now. The biggest benefit may be developer/user productivity, we don't need to worry too much about difficulty of implementation. Things can be written here as they would appear in future documentation.
 
 
 
