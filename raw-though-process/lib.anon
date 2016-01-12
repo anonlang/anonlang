@@ -1,0 +1,104 @@
+;; Need to differentiate between sys-lib and user-lib?
+
+;; Note: Composition is used at each level rather than inheritance.
+lib-0 [
+  alias byte [
+
+  ]
+]
+lib-1 [
+  alias boolean [
+
+  ]
+  alias group [
+
+  ]
+]
+lib-2 [
+  alias int16 [
+
+  ]
+  alias int64 [
+
+  ]
+  alias char [
+
+  ]
+]
+lib-3 [
+  alias number [
+
+  ]
+  alias text [
+
+  ]
+]
+
+plugin [
+  alias app [
+    alias page []
+    alias permission [
+      contact [read, write]
+      email [read, write/send]
+      file [read, write]
+      internet [read, write]
+      location [course, fine]
+      sensor
+      social [read, write/send]
+    ]
+  ]
+  alias alarm [] ;; Just an aync task? Or, call it job scheduler?
+  alias benchmark [
+   use datetime.time
+  ]
+  alias color []
+  alias datetime [
+    alias date []
+    alias time []
+  ]
+  alias file []
+  alias file-watcher []
+  alias fuzzy-boolean []
+  alias ui [
+    ;; z-level. Background default is z = 0, foreground default is z = 1.
+    alias view [
+      alias layout [
+        alias component []
+      ]
+      alias grid []
+      alias row grid []
+      alias col grid []
+    ]
+    alias text-view []
+    alias input-view []
+    alias button-view []
+    alias media-view []
+    alias web-view [] ;; Shouldn't really need to differentiate this? Though, it might actually be considered a 'sandboxed-view' with limited permissions.
+  ]
+  alias location []
+  alias map [
+    alias marker []
+  ]
+  alias math [
+    alias expression []
+    alias equation [
+      use expression
+    ]
+  ]
+  alias money []
+  alias parse []
+  alias pm [] ;; package-manager
+  alias pm-watcher
+  alias prime-number []
+  alias random []
+  alias security []
+  alias sensor []
+  alias shape [
+    alias line []
+    alias rectangle []
+    alias circle []
+    alias polygon []
+  ]
+  alias system []
+  alias trilean []
+]
