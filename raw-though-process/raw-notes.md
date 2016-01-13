@@ -471,6 +471,26 @@ design-thought [
   - 'meta' would actually be more accurate it seems rather than 'config', but 'config' as a word might make more sense [to newcomers] even though it isn't quite as accurate? Aka, get name metadata from file.meta.name, and not file.config.name. Hmm, should we make a distinction between meta and config? That'll probably be too much nuance. To things a dev would edit, it's configuration. To a user of the file/API, it would all seem as meta data.. Hmm, though 'meta' is shorter.. Things are more beneficial from the perspective of the user? As a dev, I really wouldn't mind too much between editing name and description in a 'meta' attribute as opposed to a 'config' attribute.
   - Okay, 'meta' for things that should be exposed to outside the file. 'config' for things that are internal for the file. So, hopefully, won't need config attribute often.
 - The over-arching name for variable/function/class could be called 'pattern'? Then, as a Anonlang description, we can say patterns can have patterns, and patterns can be passed as inputs and outputs. And, on the other side of things are actions. So, Anonlang has just patterns and actions.. though, any of it can be used as raw data also.. though, that data could be seem as patterns and actions. Hmm, though sometimes, actions wouldn't/dont do anything? So, 'action' sounds nice at first, but there could possibly be a better choice.
+- For packages (apps and libs), would a 'package.art' config file make more since than being always consistent with 'config' everywhere else? Or, perhaps they should be different names because the top-level config may do some few different things. Hmmm, need to create and use some sample files at each level to extract more details.
+  - Different stacks have used 'config', 'package' (Node), 'app'.
+
+            ;; package.art (currently based on Node)
+            name 'My App'
+            version '0.0.1'
+            script
+              start 'art ./bin/www'
+            dependency
+              body-parser:1.13.2
+              cookie-parse:1.3.5
+              express:4.13.1
+              jade:1.11.0
+              mongodb:2.0.33
+
+-
+
+
+
+
 
 
 
