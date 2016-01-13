@@ -486,7 +486,21 @@ design-thought [
               jade:1.11.0
               mongodb:2.0.33
 
--
+- It seems that there are two major cases for a package manager. One for the system level and one for the development level. Big question: Could just one package manager be enough for both? Wouldn't want unnecessary name conflicts or too easy of misspellings working?
+
+        pm add com.google.chrome.stable
+        pm add com.google.chrome.android.stable
+        pm add com.google.chrome.ios.stable
+        pm add com.google.chrome.corelib:42.132.97
+
+        pm add com.example.android:awesome-app
+        pm add com.example.android:awesome-lib
+        pm add com.example.ios:awesome-app
+
+  - Something else to determine is when libs should be added local or global, and when an app should be added for just current user or all users. A good/intuitive default should be the same for all so that most people don't need to read any documentation. Even though, some apps/libs make more sense global and some make more sense local.. having a common working theme would be best. Perhaps, keep in mind the idea of least-privilege. So, apps and libs added local for current user.
+  - Typically, libs shouldn't be removed so that dependencies wouldn't be broken. But, there are times, like security concerns, that maybe they should be used anymore. What to do in these cases?
+    - By default, new and lesser-used (under 1000 downloads?) libs/apps can be removed with no issues.
+    - If there are many users of sunsetting package, perhaps make it a minimal cost to remove, as to promote not removing them? $1 per 10,000 (or, 100k) downloads to sunset a package?
 
 
 
