@@ -93,10 +93,29 @@ More eventual ideas, maybe:
       humidity
       motion
     ]
+    share [
+      email [ ;; Time scheduling done in separate package.
+        to text
+        from text
+        cc text
+        bcc text
+        subject text
+        body text
+        attachment file
+      ]
+      image
+      mms
+      sms
+      text
+    ]
     ssh
     storage [
       internal
       external
+    ]
+    syndication [
+      atom
+      rss
     ]
     system
 

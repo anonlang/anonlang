@@ -1,0 +1,130 @@
+;; First half is a 'Parser Generator Compiler Config'
+;; Second half is a ''
+
+;; TODO: Add support for hexadecimal?
+;; Idea: CHARACTERS between PIPE are config/meta/annotation values,
+;;       CHARACTERS after COLON are argument values.
+
+
+config [
+  is-keep-comments true
+  output-lang java
+]
+
+;; Automatically creates UPPERCASE constants for each.
+;; Optionally, custom names can be provided.
+keyword [
+  config
+  false
+  in
+  loop
+  out
+  system
+  true
+]
+
+;; Automatically creates UPPERCASE constants for each, based on unicode name.
+;; Optionally, custom names can be provided.
+;; Note: Each token must be indented to differentiate between bracket token and closing the scope.
+token [
+  ARTDOC_COMMENT_BLOCK_START [;;
+  ARTDOC_COMMENT_LINE_START  ;;;
+  COMMENT_BLOCK_START        [;
+  COMMENT_BLOCK_STOP         ;]
+  TEXT_BLOCK_START           ['
+  TEXT_BLOCK_STOP            ']
+  TEMPLATE_BLOCK_START       [=  ;; Or, use [``], though, may look similar to '. And, ` is harder to reach on European keyboard?
+  TEMPLATE_BLOCK_STOP        =]
+  DOUBLE_SEMICOLON           ;;
+  DOUBLE_EQUALS              ==
+  DOUBLE_PLUS                ++
+  HEXADECIMAL_PREFIX         0x
+  DOUBLE_AMPERSAND           &&
+  DOUBLE_PIPE                ||
+  LT_EQ                      <=
+  GT_EQ                      >=
+  BRACKET_OPEN               [
+  BRACKET_CLOSE              ]
+  SINGLE_QUOTE               '
+  BACK_QUOTE                 ` ;; Use for raw text rather than r'?
+  PERIOD                     .
+  COLON                      :
+  PIPE                       |
+  EQUALS                     =
+  LT                         <
+  GT                         >
+  SLASH_FORWARD              /
+  ASTERISK                   *
+  HYPHEN                     -
+  PLUS                       +
+  EXCLAMATION                !
+  SLASH_BACK                 \
+  ;
+  ,
+  &
+]
+
+regex-token [
+  NEWLINE \n
+  WHITESPACE \w  ;; TODO: Update with 'not newline'
+  DIGITS [0-9]+
+  CHARACTERS [a-zA-Z]+[a-zA-Z0-9\-]*
+]
+
+precedence [
+
+]
+
+grammar [
+  PROGRAM
+  - ATTRIBUTE ATTRIBUTE
+  - ATTRIBUTE
+  ATTRIBUTE
+  - CHARACTERS ARGS PIPE CONFIG BRACKET_OPEN BODY BRACKET_CLOSE
+  - CHARACTERS ARGS PIPE CONFIG
+  - CHARACTERS ARGS
+  ARGS
+  - CHARACTERS ARGS
+  - CHARACTERS
+  - NUMBER ARGS
+  - NUMBER
+  CONFIG
+  - CHARACTERS ARGS NEWLINE CONFIG
+  - CHARACTERS ARGS
+  BODY
+  - ATTRIBUTE BODY
+  - ATTRIBUTE
+  BOOLEAN
+  - TRUE
+  - FALSE
+  TEXT
+  - SINGLE_QUOTE CHARACTERS SINGLE_QUOTE
+  - SINGLE_QUOTE SINGLE_QUOTE
+  NUMBER
+  - DIGITS PERIOD DIGITS
+  - DIGITS
+  MATH_EXPRESSION
+  - NUMBER MATH_OPERATOR MATH_EXPRESSION
+  - NUMBER MATH_OPERATOR NUMBER
+  MATH_OPERATOR
+  - PLUS
+  - HYPHEN
+  - ASTERISK
+  - SLASH_FORWARD
+  BINARY_OPERATOR
+  - DOUBLE_AMPERSAND
+  - AMPERSAND
+  - DOUBLE_PIPE
+  - PIPE
+  HEXADECIMAL_NUMBER HEXADECIMAL_PREFIX DIGITS
+]
+
+implementation-java [
+
+]
+implementation-javascript [
+
+]
+implementation-html [
+
+]

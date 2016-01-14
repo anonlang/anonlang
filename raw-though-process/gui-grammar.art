@@ -49,6 +49,8 @@ keyword
           hour
           minute
     text-view
+      h1-text-view ;; Or, title-text-view?
+      h2-text-view ;; Or, subtitle-text-view? subsubtitle would be weird. ;; Perhaps, have a way to automatically size/style depending on indentation?
     web-view ;; Don't need for the ultimate version of Art lang, right? Maybe call it dynamic-view? which wouldn't work in strict mode.
 
 grammar

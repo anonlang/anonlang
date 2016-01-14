@@ -355,6 +355,7 @@ design-thought [
 - Create 'fun' library. this is where '99 bottles of beer song can be added', or maybe just add it to lyrics library? Though some fun libraries can also be useful.
 - Re: 'keyword-use' 'keyword-import'
   - 'use' is nice that it's short, though it doesn't follow the style of other Anonlang names that could be verb/noun? 'import' could be that verb/noun. Though 'use' is short and sweet.. Hmm, but I guess 'use' could be called without it actually being used.. So, 'import' seems to be the better keyword for now.
+  - Need to consider when use/import is done within a smaller scope, like available to only one attribute/function.
   - Perhaps some way to limit more typing when 'use'ing.
 
             use Anonlang.Layout
@@ -501,6 +502,15 @@ design-thought [
   - Typically, libs shouldn't be removed so that dependencies wouldn't be broken. But, there are times, like security concerns, that maybe they should be used anymore. What to do in these cases?
     - By default, new and lesser-used (under 1000 downloads?) libs/apps can be removed with no issues.
     - If there are many users of sunsetting package, perhaps make it a minimal cost to remove, as to promote not removing them? $1 per 10,000 (or, 100k) downloads to sunset a package?
+  - Need to consider about command line utilities, which should be easy to use. Shouldn't need to type out long name each time. Shouldn't have to manually define each shortcut? Hmm, perhaps use the same idea as in Java.. the full package name could be used, or just the ending. This is the same idea that would/could be used to find packages in the package manager. If there are two packages of the same name, then the full package name would have to be used.
+- Attributes/modifiers for attributes/functions could be proceeded by a backslash. Some modifier names would be reserved, others left open to users.
+
+        \global \lazy \singleton \markdown \async my-thing [ ... ]
+
+        \[global lazy singleton markdown async] my-thing [ ... ]
+
+- If settings are created for everything, then it will become like Windows Registry.
+
 
 
 
