@@ -510,14 +510,70 @@ design-thought [
         \[global lazy singleton markdown async] my-thing [ ... ]
 
 - If settings are created for everything, then it will become like Windows Registry.
+- Create M programming language. It's shorter than minimal, mnml, min, mn.
+  - Idea: Use fewest tokens as possible to do everything. Readability isn't the biggest goal for this language. Thus, things that could be implicit are implicit, just as long there isn't (too much) ambiguity. The process of going through this will help to design Art and Anonlang by seeing things in a different perspective.
+    - Similar to J or other codegolf languages? Kinda, but not really, because those try to have fewest characters/bytes whereas M will attempt to have fewest tokens. The distinction is that tokens can contain multiple characters, which tends to help readability. Maybe more similar to Ruby?
+    - Hmm, don't most languages try to have least amount of tokens avoiding ambiguity?
+    - The outcome of this project really depends on what the requirements are. How many features should be available? (CSV is good for list of data)
+    - Restriction: Limit input to keys found on standard keyboard.
+  - Patterns:
+    - No need to define parameters. They are just always accessible, if available. (Similar to some shell languages.)
+    - No need to use token when returning value if we just return the last line automatically. (Similar to Ruby, and others.)
+  - Iffy-patterns:
+    - Max length names so that so whitespace isn't needed for next token.
+- Colon as assignment, and single equals sign as equality?
 
+        call: 'maybe'
+        if call = 'yes' [
+          ;; Do something.
+        ]
 
+  - It could be possible to not use any extra (non-whitespace) token for assignment.
+    - One potential pro of having colon could be to easily have multiple keys for a single value? Hmm, it could be read multiple ways ambiguous, thus not intuitive. Ex: 'k1 k2 k3: val'
+    - So, not really any benefit for having an assignment token, besides maybe readability?
+  - What would 'a : b : c' mean?
+  - Maybe have contextual equal sign like in math? 'Let x = 12. If x = 12, then do something.'
+- Using brackets instead of indentation is better (aka, more reliable) when code is being copy+pasted. It's easier to lose indentation than it is to lose brackets.
+  - A missing bracket is a syntax error. A missing indentation is wrong code.
+- Anonlang standard library always connected in the cloud, always expanding. When they are used in an app, then necessary code could be cached locally.
+  - For those that don't want that, a full snapshot of the standard library could be made available offline.
+- Ampersand for sugar syntax for hashing.
+  - But, ampersand is already too common of usage for bit manipulation.
+- There is
+  - CRUD: Create Read Update Delete
+  - ARGS: Add Remove Get Set
+- Re: 'keyword-publish', 'keyword-deploy'
+  - 'publish' is more common 'deploy' according to [Google Ngram](https://books.google.com/ngrams/graph?content=deploy%2C+upload%2C+publish&year_start=1800&year_end=2000&corpus=15&smoothing=3&share=&direct_url=t1%3B%2Cdeploy%3B%2Cc0%3B.t1%3B%2Cupload%3B%2Cc0%3B.t1%3B%2Cpublish%3B%2Cc0)
+  - Could use 'push test' and 'pull production'?
+  - Need an easy way to work offline, then 'publish' the build/project/app/package.
 
+            config [
+              alias clean []
+              alias build []
+              alias publish [
+                in dest ;; Either test or production
+                build dest
+                alias url
+                if dest = 'test' [
+                  url 'sftp://example.com/test'
+                ] else if dest = 'production' [
+                  url 'sftp://example.com'
+                ]
+                ;; TODO: Send build/<dest> folder to defined URL.
+              ]
+            ]
+            config [
+              publish-production-url 'sftp://example.com'
+              publish-test-url 'sftp://example.com/test'
+            ]
 
-
-
-
-
+  - Possibly only upload changes. Thus, possibly integrate git. Actually, there are standards for 'change' files. So, we could just do a local diff and upload that results. Hmm, though things could change on remote without local knowing.. Perhaps a hash of each folder to know if things were changed? Or, we could just look up the last modified date, though that might be a little more susceptible to being incorrect. So, do both? Or, we can have a remote watcher that takes notes of changes in a file at root. Hmm, basically, we might just be building git here.
+    - `art remote add public sftp://example.com && art push public`
+    - Hmm, maybe too close to git, it doesn't really imply build and pushing that. So, would maybe need to change it up with 'art push build public'.
+- Re: 'keyword-art-init'
+  - If there ever is a command to 'art init [<package>]', then there will probably be a directory somewhere full of templates to use and easily edit and share.
+    - Each of these templates might even be a package in pmaas.
+- Language idea: All language keywords would be symbols, then all letters seen would be from user or library defined things.
 
 
 

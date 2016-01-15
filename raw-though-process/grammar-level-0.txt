@@ -1,0 +1,40 @@
+;; Haskell syntax: https://www.haskell.org/onlinereport/syntax-iso.html
+;; Cobol syntax: http://www.csci.csusb.edu/dick/samples/cobol.syntax.html
+;; Duck-lang grammer: https://github.com/gregtour/duck-lang
+;; Pascal: https://github.com/alcides/pascal-in-python
+
+symbol [
+  [
+  ]
+  '
+  ['
+  ']
+  [;
+  ;]
+  ;;
+  +
+  ++
+  *
+  -
+  /
+  =
+  ==
+  !=
+]
+
+keyword [
+  byte
+  byte-group
+]
+
+data := name type [ data ]
+  | text
+
+string := ' text '
+string := [' text ']
+
+comment := [; text ;]
+comment := ;; text
+
+name := text
+type := text

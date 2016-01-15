@@ -1,0 +1,2 @@
+program := { file }
+file := [use] [config] [main]
