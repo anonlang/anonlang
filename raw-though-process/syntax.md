@@ -1,7 +1,25 @@
 # Syntax #
 Sample examples of what it could be. Goal is to limit boilerplate, keep readability.
 
-Currently, just throwing around some random ideas.
+For each toggle-able feature, there may have to be a token for it:
+
+1. Variable mutable/immutable. Should we have a decision to be able to change name alias? (keyword-final)
+2. Run code sync/async? Everything could be event-driven?
+3. Run code just once now, or save for later calling arbitrary many time? (the function question)
+4. Is a function name being call to run or just as reference? (the lambda question)
+5. Force all statements to just one line or allow multi-line? (The semi-colon question)
+6. For code that will execute once, do it immediately or lazily (automatically postpone work until actually needed/used)?
+7. Visibility of attributes to be local/global?
+8. Should attribute be singleton or have multiple instances?
+9. Whether or not to store to main memory or local memory? (keyword-volatile)
+10. Provide hint to compiler for inlining? (keyword-inline)
+10. Tooling support
+  1. Note when a function should be overriding a parent function. (keyword-override)
+  2. Note when a function should be overridden by a child function. (keyword-abstract)
+  3. Note when an attribute should be null or not. (keyword-nullable, keyword-nonnull)
+
+
+
 
 
 

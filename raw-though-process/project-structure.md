@@ -29,7 +29,7 @@ The defaults for each of the above, and possible labels:
 - src, default='./src/'
 - res, default='./res/'
 - lib, default='./lib/'
-- out, default='./out/'
+- out, default='./out/' ;; Maybe 'build' instead since out may already be used a lot for other purposes.
 - config, default='./config.anon'
 - sdk, default=';ANONLANG_DIR;'
 - hook, default=''
@@ -64,7 +64,7 @@ Here's a sample project structure: (need to change between main and default)
         default/
         free/
         pro/
-    out/
+    build/
         default/
         free/
         pro/
@@ -83,10 +83,10 @@ or
     test/
        src/
        lib/
-    out/
-        default/
+    build/
         free/
         pro/
+        test/
 
 
 
