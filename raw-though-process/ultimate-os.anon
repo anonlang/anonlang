@@ -1,0 +1,45 @@
+axiom [
+  Faster code with fewer abstraction layers.
+  Code reuse is good; Duplicate code is bad.
+  Boilerplate code is bad. Boilerplate code is duplicate code.
+]
+
+goal [
+  'Few pieces.' [
+    One type of window -- More extreme version of Chromium OS, like how mobile apps and tablets handle windows, but with better positioning.
+  ]
+  Focus on simplicity.
+  Learning.
+]
+
+os [
+  driver [ hardware should just work, good programs will help that to happen ]
+  file-system [ Everything is a file or group of files. It is all backed by 'alias' and 'group'. ]
+  security [
+    Linux-like permissions and sand-boxing.
+    Allow one user or (shared) group at a time.
+  ]
+  ;; OS should be immediately usable when starting computer.
+  startup [
+    kernel
+    bootstrap-os [ keyboard-driver ]
+    full-os [
+      mouse-driver (and other input methods)
+      lazy-load GUI lib as needed
+      ;; OS usable here without lag
+      visible system apps
+      visible other apps
+      apps for status bar
+      network
+      background system apps
+      background other apps
+    ]
+  ]
+  windowing-system [
+    2d-k-tree-window-partitioning, always maximized in their locations, fluid transitions, default partition between multiple screens (doesn't have to be followed though)
+    Ability to define windows to always open in certain location. Perhaps default to the position when how it was closed.
+    App name at top-left after button for app settings and options.
+    Top-right has optional system and app plug-ins, like time, cpu, network, mail, volume, battery, language, chat, shortcut.
+    Possibly have system/app status-bar plug-ins at only bottom-right (not a bar all the way across).
+  ]
+]
