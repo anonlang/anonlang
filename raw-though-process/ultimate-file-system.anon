@@ -1,0 +1,113 @@
+;; Hierarchal file systems have limitations for non-trivial collection of data.
+;; Limits:
+;; - Files don't always have a tree-like organization
+;; - Hard to search orthogonally on meta-data
+;; Some solutions are to use a database and/or graph.
+
+[; Idea: GUI
+A new GUI structure when using database may be a window with list of
+most-recently-used tags (and groups of tags).
+
+When saving files, would show file meta data instead of location field.
+;]
+
+[; Idea: File navigation and actions
+It is more common to navigation through directories compared to selecting
+them, so the default operation of a single click should be opening the
+directory.
+Moving can still be done by click-holding.
+Menu-context can still be done by right-clicking.
+Arrow keys can still be used to change selection.
+Directories are separated by period rather than slash.
+;]
+
+
+
+
+
+file [
+  ;; The group of tags would relate to the traditional
+  ;; names of directories the file was in (or could be in).
+  name
+  type
+  icon
+  owner
+  group
+  permission
+  description
+  tag []
+  size
+  ;; More info: https://en.wikipedia.org/wiki/Simple_file_verification
+  hash-md5
+  hash-sha1
+  date-last-modified
+  date-created
+  rating ;; 0..100
+  plugin []
+  numAccesses
+  ;; While file is open, it is only counted as one modification even
+  ;; when saved multiple times.
+  numModifications
+  isModified
+]
+alias media-file file-meta-plugin [
+  artist []
+  album
+  artwork
+  comment
+  composer
+  date-last-played
+  date-last-skipped
+  numPlays ;; Almost same as file.numAccesses
+  numSkips ;; numPlays + numSkips = numAccesses?
+  date-purchased
+  source
+  date-composed
+  year-composed
+  beats-per-minute
+  bit-rate
+  sample-rate
+  time
+  genre [] ;; Or, just have this in file.tag?
+
+  [; Not needed?
+  disc-number
+  track-number
+  episode-id
+  episode-number
+  season-numebr
+  ;]
+]
+
+alias audio-file media-file []
+alias visual-file media-file []
+
+alias image-file visual-file []
+alias video-file visual-file []
+
+alias movie-file video-file []
+alias tv-show-file video-file []
+
+
+;; Use this plugin to quickly access some files. A warning would appear
+;; for trying to re-use a hotkey, but files can be added to whitelist to
+;; allow for opening multiple files with a single hotkey
+alias quick-file file-meta-plugin [
+  hotkey
+  group
+]
+
+
+
+[; Note: Potential Problems
+When '/book/dev/how-to-be-awesome.pdf' and '/dev/book/how-to-be-awesome.pdf'
+don't point to the same file. The database version would want to point to
+only one of those since they have the same tags and name.
+;]
+
+alias further-resources meta [
+  Good: File System Alternatives, http://c2.com/cgi/wiki?FileSystemAlternatives
+  Good: Limits of Hierarchies, http://c2.com/cgi/wiki?LimitsOfHierarchies
+  Good: Towards A Single Folder Filesystem, http://www.skytopia.com/project/articles/filesystem.html
+  Good: DBFS, http://dbfs.sourceforge.net/
+]
