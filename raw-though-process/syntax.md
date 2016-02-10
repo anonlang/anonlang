@@ -415,3 +415,15 @@ something value
       in a b
       ;; Do something
     ]
+
+;; Should be able to something similar? Though maybe with different syntax
+
+    ;; Access instance initialized in scope's conditional/initializer. Or, making "lazy" function could be essentially the same thing. Maybe there could be 'thread-lazy', 'function-lazy', 'class-lazy', 'timed-lazy' version, where each are calculated once per <modifier>.
+    int foo() {
+      if ((int a = -1) == -1) {
+        out a + 1
+      } else if ((int b = getB()) == -2) {
+        out b - 2
+      }
+      out 0
+    }

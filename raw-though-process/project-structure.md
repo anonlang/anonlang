@@ -144,9 +144,12 @@ Sidenote: Is /res/ redundant? Just put all of it in /src/? Hmm, I guess it can b
 ## Modules ##
 For naming modules, here's the preferred way. It groups modules together that a dev would want to see at a given time. This organization would minimize scrolling in the IDE's project explorer.
 
-    core-lte-band-lib
-    core-signal-lib-android
-    core-util-lib-android
+    ;; core signifies that it has no dependencies.
+    core-lte-band[-lib]
+    core-signal[-lib]-android
+    core-util[-lib]-android
+
+    ;; Format: appname-[featurename-]type-platform
     lted-app-android
     lted-app-mobile
     lted-app-pc

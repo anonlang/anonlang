@@ -1,17 +1,3 @@
-axiom [
-  Faster code with fewer abstraction layers.
-  Code reuse is good; Duplicate code is bad.
-  Boilerplate code is bad. Boilerplate code is duplicate code.
-]
-
-goal [
-  'Few pieces.' [
-    One type of window -- More extreme version of Chromium OS, like how mobile apps and tablets handle windows, but with better positioning.
-  ]
-  Focus on simplicity.
-  Learning.
-]
-
 os [
   driver [ hardware should just work, good programs will help that to happen ]
   file-system [ Everything is a file or group of files. It is all backed by 'alias' and 'group'. ]

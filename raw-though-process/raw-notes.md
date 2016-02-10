@@ -574,6 +574,44 @@ design-thought [
   - If there ever is a command to 'art init [<package>]', then there will probably be a directory somewhere full of templates to use and easily edit and share.
     - Each of these templates might even be a package in pmaas.
 - Language idea: All language keywords would be symbols, then all letters seen would be from user or library defined things.
+- Re: 'lifecycle' 'life-cycle'
+  - Non-GUI app: start->stop
+  - GUI app: start->show->hide->stop
+    - Limiting to these because this is likely the subset that all apps would use. Additional events could be handled separately, like on-focus-change (handled within views?), on-cold-start?, ..
+  - When implementing/superclassing/subclassing these, the superclass should be able to define the default location to be called, as in beginning or end of the function. That way, the subclasser doesn't have to worry about manually calling the superclass method. Hmm, maybe kinda like how Java constructors can call a default super().
+- Code between square brackets are strictly scoped. Aliases created in the scope can not be accessed outside of the scope.
+- Instead of `db.beingTransaction` and `db.endTransaction`, maybe do `db.transation.start` and `db.transaction.stop`.
+  - Possibly better: `db.batch [ [; Do stuff to db here. ;] ]`
+- Instead of having an app lifecycle with a start and stop function to optionally override, what about a concept of function listeners for all functions? Then, if we want to get a callback and do some work during the app 'start', then we would call `App.onStart [ [; Do something ;] ]` or `app.start.add [ ... ]` with a corresponding 'remove'. To make it look less like a list or group or data object being added too, maybe have a 'callback' keyword available for the function names.
+  - Is it good for anybody anywhere to get a callback for any function?
+    - Useful for diagnostics that only run in debug/test mode.
+    - Kinda like function extensions, but for the inside? or reversed?
+- Don't make strong language decision based on performance or space. This language is for a different paradigm. This is likely mentioned elsewhere, though it still good to repeat.
+- A global trie tree for all aliases?
+- Printing/outputting functions might be as easy as outputting text.
+- To call a function, put the equals sign before it. Kinda like a spreadsheet program.
+  - Hmm, then back to colon for assigning?
+  - Summary: equals-sign to call right side once, colon would mean it's basically okay to inline the right-side everywhere the left-side is called. The language may not actually do that, but it would be similar in that the rhs gets called multiple times. Variable, not value.
+- Lazy evaluate by default, then keyword maybe needed for when to calculate immediately. Then, again, lazy eval might just be good enough. Only reason to evaluate early may be to pre-build a cache and prevent long-running code from happening later.
+- StandardMessage or AnonMessage
+  - Base for things like Android's AlertDialog, Toast, and SnackBar
+  - Style can be passive or active
+- Anonlang app, every app is the same base, just different styles/plugins applied.
+- Rather than just having every UI view have the '-view' suffix, perhaps just putting the alias directly to the layout should work. We could say text goes in a text-view, input numbers into a number-input-view, but what exactly do we gain? Those conversions can likely be done automatically, thus freeing developers from seeing '-view' everywhere in a layout.
+  - So, thinking about gains coming from adding the '-view' suffixes.. Would they have more attributes than their 'non-view' makeup/counterpart? 'text' itself doesn't need any styling, it would just be the backing data and very minimal. When putting 'text' in a layout, we may want to add different 'text-style' to it.
+  - Or, should we think of it as every use of 'text' is actually using a 'text-view' is diguise?
+  - What about things that don't have a 'view' counterpart? Or, are they any such things? Sure, like thread, but maybe those would just be invisible by default.
+  - Another consideration, what about when we want to include code in the layout or template? We may need to distinguish between text that shouldn't be shown and text that should be shown. It seems nice to be able to just write a view in a layout and have it appear, rather than having to call show on the view each time.
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -601,7 +639,6 @@ Design patterns are overrated. Just provide an interface for things that may cha
     ]
 
     ;; So, a 'reference' app could just have the layout and data.
-
 
 
 
@@ -694,6 +731,8 @@ Design patterns are overrated. Just provide an interface for things that may cha
   - Associative array. Awk is great case study and format/pattern/language
     - Pattern -> Action format
     - New Anonlang type: `type pattern-action`
+- Re: 'language-erlang'
+  - http://c2.com/cgi/wiki?ErlangCodeExamples
 
 - TODO:
   - Read http://lambda-the-ultimate.org/node/3680
