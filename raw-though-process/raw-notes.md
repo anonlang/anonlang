@@ -342,7 +342,7 @@ design-thought [
 - Functions only accept one parameter. 'input' is optionally used to help parse the group that may be passed in.
 - When defining Anonlang types, there can be a human-readable-type and simultaneous a storage-type or data-type or computer-type or transfer-type. Thus, use readable 'json' and protobuffers at same time by just defining type. If only one type is defined, then that will be used for both reading and storage and transfer.
   - FileType.Markdown.GitHub or Language.css or A.Lang.Anonlang or A.L.markdown?
-- Prepend with 'alias' to just store reference, without 'alias' they would be immediately called. Maybe need 'lazy' tag for that case? But, shouldn't have to worry about that when performance isn't a concern.
+- Prepend with 'alias' to just store reference, without 'alias' they would be immediately called. Maybe need 'lazy' tag for that case? But, shouldn't have to worry about that when performance isn't a concern. Or, we can think of the code as always being lazy, and user would just have to call it early to get it to load early.
 - Back to text. Back to editing the raw data. Then, view any way you'd like.
 - Something like proguard can be activated by default for production? But, people have many problems with the real ProGuard. Nah, don't have because this language is for the case when people don't have worry about space or performance.
 - Blog: Use yes/no or true/false. The later is just good for discrete math, aka boolean algebra and yes/no can be used everywhere else?
@@ -379,7 +379,7 @@ design-thought [
                 Animation
               ]
             ]
-
+  - There is probably an even better way of dealing with import/use, for example assigning an alias/variable to the package/class, and possibly even creating an instance in that same line: `random-num-gen = new com.anonlang.random.number`.
 - Feature: Partial/scope compile. Basically, represent Anonlang alias/function in a box that allows easy toggle between different levels of code. The last level edited would become the 'source'. Or, to make that more understandable, perhaps remove the higher level code (or grey it out) once the lower level code is edited.
 - If shift keys are used in Anonlang, then what should they be used for? They really are in prime locations.
 - Code sure looks nice without brackets everywhere: https://en.wikipedia.org/wiki/Cobra_(programming_language)
