@@ -37,18 +37,41 @@ anonlang-lib-keywords [
 
 potentials [
   * add/remove
+  * in/out
+  * start/stop
   bind/unbind
   create/destroy
-  get/set
   hit/miss
-  import/export
-  * in/out
-  input/output
+  import/export/use
   on/off
-  open/close
   push/pull
-  set/unset/reset
-  * start/stop
   update/revert/undo
   upload/download
+]
+
+allowed-verbs [
+  add
+  close
+  hide
+  open
+  remove
+  select
+  show [not: display]
+  maybe-not [
+    get
+    set [not: unset, reset]
+  ]
+]
+
+allowed-nouns [
+  app
+  file
+  in
+  input
+  number
+  out
+  output
+  page
+  text
+  view
 ]

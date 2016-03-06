@@ -1,6 +1,48 @@
 Major concepts to resolve:
 
+To answer these, I first have to figure out what exactly I want Anonlang to be used for. Really, what? General purpose or specific application? At least layouts and code. Easy memory model?
+
 - *Syntax to pass arguments to functions.*
+
+        ;; Different paradigms to try
+        pattern action
+        input function output
+        function input output
+
+
+        ;; What about input?
+        row views
+        row text text-input button [foo bar]
+        alias list-row row [in views|views|out views]
+        alias m-in-row row [in * | foo bar bax | out * ] ;; Possibility for template without defining strict inputs and replacements?
+        alias z-in-row row [in | foo bar bax ]
+        row [in views|views|out views] [text text-input button] ;; to call?
+        list-row [text text-input button] ;; Same as above
+        row [in * | foo bar bax | out * ] [text] ;; to call?
+        row [in | foo bar bax ] [] ;; to call?
+        z-in-row [] ;; Same as above
+
+        ;; When there is the 'in' keyword, it doesn't evaluate until later. What about functions with no inputs? Either use lazy or 'in' with no params. 'none' keyword? Nah, maybe blank is better.
+        ;; 'out' above doesn't have println because don't mix code and layout
+        ;; comma-separated output
+        ;; to have anonymous function/lambdas just need brackets to show precedence
+
+
+        ;; What about default arguments and restricting input and output types?
+        alias set-profile [in name:text, address:text='', height-in-cm:number| [; Do something;] ]
+        max 3 4 min [5 6]
+        log [max 3 4 min [5 6]] ;; Perhaps not the same as `log max 3 4 min [5 6]`
+        alias max:comparable [ in numbers+:comparable | var m=numbers.0, numbers.reduce-parallel [it > m ? m = it] | out m ]
+
+        ;; So, [] means calculate, unless there is the 'in' keyword in there?
+        ;;    What about a long log?
+        ;; So, [] belongs strictly to the alias to its left
+        ;; So, no [] means following symbols on same line are inputs to call the alias?
+        ;;     What about configs for an alias? (lazy, once, static, )
+        ;; Default is no hardcoded types. Hardcoded types can be added with colon then the type
+        ;;     To have a better type inference, could be useful to have a table of different functions that each type can do.
+
+
   - Prefer not having to wrap them with brackets because the function body may already be wrapped with brackets.
   - Prefer not to use the shift key. So, that would limit the curly brace and parenthesis.
   - A test for intuitiveness. Ask a non-programmer what some code does.
@@ -16,7 +58,7 @@ Major concepts to resolve:
     - Hmm, one reason Java may have added varargs sugar syntax was because creating arrays were difficult. Since it is simple in Anonlang, perhaps the varargs syntax isn't needed. Just us group instead.
   - Idea: A syntax could be used for function as a argument, like calling it 'lambda' or putting an asterisk before the name (like in C). But, I don't care for either of those ideas because it introduces more unnecessary complexity to developers. Prefer complexity done once in the backend rather than new requirement/complexity for each developer using the API.
   - Idea: Functions can be passed as arguments, but they never evaluate inline when they are the arguments. Meh. I would also prefer not to limit devs. I'm sure there is a better way, but it just hasn't been thought of yet.
-  - For varargs, Ceylong-lang handles this by accepting 'Iterable' parameter. The syntax is asterisk after the type to mean 'zero or more' and a plus after the type to mean 'one or more'. Ex: 'alias max [ input number+ ]' [source](http://ceylon-lang.org/documentation/1.2/reference/structure/parameter-list/#variadic_methods_and_varargs)
+  - For varargs, Ceylong-lang handles this by accepting 'Iterable' parameter. The syntax is asterisk after the type to mean 'zero or more' and a plus after the type to mean 'one or more'. Ex: 'alias max [ input numbers+ ]' [source](http://ceylon-lang.org/documentation/1.2/reference/structure/parameter-list/#variadic_methods_and_varargs)
 
         ;;
         x = math.max 3 4 5
@@ -39,6 +81,7 @@ Major concepts to resolve:
         ]
 
   - Are defining function body and scoping arguments mutually exclusive? Aka, are they never needed or used in the same statement?
+  - In Groovy/Gradle, it can be complicated when seeing `foo = 4` and `foo 4`. Though, would it be better to have `foo [4]` to show explicit intent rather than `foo 4`? Or, maybe it would just be better to not have same names.
 
 - *Syntax to end statements or have multiple statements per line*
   - Easiest solution is to not allow multiple statements per line. Thus, an extra trivial 'semi-colon' token wouldn't be required. Hmm, though in languages not requiring the semi-colon ending, the newline is used as the token. Well, at least in the later case there is less typing overall even though it would look the same to the compiler.
@@ -602,6 +645,24 @@ design-thought [
   - Or, should we think of it as every use of 'text' is actually using a 'text-view' is diguise?
   - What about things that don't have a 'view' counterpart? Or, are they any such things? Sure, like thread, but maybe those would just be invisible by default.
   - Another consideration, what about when we want to include code in the layout or template? We may need to distinguish between text that shouldn't be shown and text that should be shown. It seems nice to be able to just write a view in a layout and have it appear, rather than having to call show on the view each time.
+- In order to more easily tell the difference between files and paths/directories, all path/directories should end with the slash.
+  - The trade-off would be the inability to dynamically address a file and directory depending on what is there. So, maybe it isn't worth it. A similar case and precedent of not distinguishing would be the use of variables/methods in a programming language.. where it would sometimes be nice to switch between the two, but not have to change all other references. So, in that case, would it be better if no paths/directories ended with the slash? Or, is this something that should be distinguished?
+  - For the variable/method name metaphor, there might be a limitation that they both can't exist at the same time. So, should there be that same limitation for file/directory? Can't have a directory with the same name as a file in the same parent directory? This might be an okay trade-off to prevent the edge case of having to figure out which to use, either the file or directory. For the negative side, when would we want to have a file and directory of the same name in the same directory? I can't think of any use-cases at this time. Hmm, then again, maybe they are different if we include file types with the file name. But, then if that's required, we'd lose out on being able to dynamically address a file that may change types. Sidenote: Perhaps a change like PNG to WebP or JPG would be easier to understand than PNG to JSON. But, that depends on the case, a media-view could potentially handle that. Hmm, another sidenote.. it seems that media-view itself might just be a full-blown very large application.. or maybe it could be limited more to just decoding the bytes and allowing plug-ins to change the actual output view for certain file types. Hmm, maybe in the far future different paradigm programming language without time/space concerns, the bytes may not be that tough to decode, or maybe even non-existant at all. But, alas, it seems that computers will always have bytes someplace.. String is just bytes that's already be decoded also. And abused/overloaded Strings has further decoding still to go.
+- Idea for view creation: `text-input-then-button-view` would be a combination of text-input-view and button-view done in one line and without needing to define row explicitly.
+  - Would need to have a keyword for 'to-end-of' 'to-below-of' and possibly just 'and' for 'end-if-space-otherwise-below' useful for mobile/responsive
+    - `text-input-over-button-view`
+- Everything read left to right?
+  - What about math? It would be unintuitive unfortunately is that was always left to right
+- All standard general functions immediately accessible with no prefix/namespace? Allow those to be overridden by user? Allow to submit those overrides to actual standard library if it is better in all tests that have been created for it? Even after an override, perhaps make actual standard library accessible with `a.`, like `a.max`? That and sort takes a group of any like comparables.
+  - General top-level standard functions/aliases would at least include: max, min, sort, shuffle/mix, subset/submap/subgroup/sub/part/group/slice/select, combine/group/set/map, log, in, out, math (maybe good for equations in code), filter, and basically things that can be performed on groups.
+    - 'add' may have to be special because it does different things for number,text,group. Maybe use sum for math type
+
+
+
+
+
+
+
 
 
 
