@@ -509,6 +509,9 @@ design-thought [
   - Perhaps, put this quine function in a 'reflect' class like the 'system' class?
 - Use 0xx prefix for base-64?
   - Look up how it is typically done. Maybe 10 numbers, 52 letters, dash, and plus/undrescore
+  - A common pattern for base 16 is to prefix it with '0x'. What about having '16x' prefix or suffix of 'b16'? By including the number, we can easily have a pattern for many different bases.
+    - Hmm, one potential issue would be when bases use different characters. There are a few different types of base 64. Maybe either Anonlang should define support for just one by default (allowing users to change to other in-code) or not support it at all. Maybe only upto 62 by default (10 numbers, 52 letters)? Nah, 64 is really common and is a nice power of two.
+    - It would be nice to have a sugary way to convert between the bases.
 - The encoding for the file should be near the front of the file. Should all the file attributes also be encoded into the file instead of as meta-data? We could say that the config section is always utf-8 and it has implicit fields like data and type and stuff. Though, config sections could get big.. is that okay? For the Anonlang paradigm that size and speed doesn't matter, we should add it for the convenience.
   - We would need a new tool for compressing and decompressing so that the beginning isn't messed with too much. We could/should leave everything as one file still though? And, if applicable, have the thumbnail included in the implicit config attribute also?
   - This would mean that every file is non-zero size. And, that's okay because it's always been non-zero size with meta-data in the different file systems?
@@ -656,6 +659,26 @@ design-thought [
 - All standard general functions immediately accessible with no prefix/namespace? Allow those to be overridden by user? Allow to submit those overrides to actual standard library if it is better in all tests that have been created for it? Even after an override, perhaps make actual standard library accessible with `a.`, like `a.max`? That and sort takes a group of any like comparables.
   - General top-level standard functions/aliases would at least include: max, min, sort, shuffle/mix, subset/submap/subgroup/sub/part/group/slice/select, combine/group/set/map, log, in, out, math (maybe good for equations in code), filter, and basically things that can be performed on groups.
     - 'add' may have to be special because it does different things for number,text,group. Maybe use sum for math type
+- Even though it would seem nice to use 'i' for int and 't' for text, don't do it because the loss of readability is too much, especially for new-comers.
+- Maybe don't need to have `a.` prefix for Anonlang command/standard lang function, is just the `.` as prefix good enough?
+- A `PrimeNumber + PrimeNumber` wouldn't necessarily return a `PrimeNumber`.
+- How to easily develop board games and rules for them?
+- Only SVG? Not PNG or JPG support? Or, it might just be through automatic conversions as necessary.
+- I want to limit Anonlang v1 symbols to no more than the following: [];,./'><-
+  - All would be sugar except: []  (afterthough, hmm, maybe could use 'scope' or 'blockstart' and 'blockend'). Use grammar file as reference? All text language? That's COBOL? Smalltalk is similar? I forget.
+  - Could use ' assign' instead of ':', and 'add' or 'then' or 'list' for ',', and 'of' for '.'? The 'of' one might be a reflective way of calling function/attribute of an object.
+- The equals sign '=' is really far away. But, it could be more so that I don''t use it that much and am not that comfortable with it. But, it is still the farthest of the main Anonlang symbols used. So, we should try to limit it. The colon would more likely be used for assignments, especially since that is somewhat common in regular english text. But, we will try not to have that also. Hmm, make a language with no symbols at all? Is that what Lisp is like, with only parenthesis? And, maybe commas? Then, once that language is available, the symbols are just syntactic sugar anyways, which would feed into those functions.
+  - A question: What is done more often, assignment or equality check? At least for larger programs, I think there would be many assignments. There doesn't necessarily have to be any equality checks for a program, but small programs might only equality checks on input and no assignments.
+- MAAL: Markdown As A Language
+- Maybe use colon for start block character and semi-colon for stop block character, rather than brackets. The colon siblings are easier to reach, though need to think more about the full consequences of possibly missing out on some other things.
+- Each line can be considered a block. We are getting back close to Lisp style. brackets might be more visually intuitive as a start and stop.
+- title might be less confusing than name for configs. Or, can clarify by using app-name and author-name.
+- i8 could stand for int(8) as in defining size. It could be arbitrary number when looked at as a constructor. t8 could be text initialized with capacity of 8 char.
+- defining as I and t is nice, but it could start to get more completed with more types. And readability definitely hurts. Full write of int and text isn't too hard more.
+- the problem with number as argumemt when appended directly is that it could be confused with a variable name, though devs should be using more descriptive names
+- everything is an anonymous function. It's just that some of them have alias
+- eventually, create different docs for 'translate Java to anonlang' or 'learn anonlang from Java'
+- Add runs off the main thread by default. Then, all UI updates would go to UI thread.
 
 
 
@@ -671,10 +694,22 @@ design-thought [
 
 
 
+## Scope Types
 
+view [] OR layout []? maybe not layout [] or maybe both. Shouldn't depend on landscape of portrait, but just width.
+animation [], need a way to designate serial and parallel. This scope might be subclass of action. Maybe can designate with 'worker-thread' (random thread from pool), 'network-thread', serial-thread'
+style [], possibly includes theme and color, and dimensions? Dimensions maybe sub scope on style. Or, maybe more like CSS/SASS/LESS
+action [] OR task []? maybe not task []
+text [] for i18n. Maybe text-en[], text-cn[]
 
+Maybe filename can be used so that don't need to explicitly define it in the file?
+Also action scope could be default.
 
+Also, maybe in same directory style as Android.
 
+This scoping gets past having different languages, though each scope may have a different DSL, like don't need to for diffuse folly say view in the view scope, while other scores would need it. All should be very similar setup/syntax though.
+
+Doesn't custom definable scopes make sense? Generic template? That could be used for any scope type? It could be like regular groups with qualifiers.
 
 
 
@@ -771,6 +806,8 @@ Design patterns are overrated. Just provide an interface for things that may cha
   - quirks: http://blog.hostilefork.com/major-rebol-language-quirks/
   - Similar lang: http://www.red-lang.org/
     - Open source: https://github.com/red/red/tree/android
+    - [Learn X in Y minutes, where x is Red](https://learnxinyminutes.com/docs/red/)
+    - [Rebol Cookbook](http://www.rebol.net/cookbook/)
 
 - https://github.com/rebol/rebol
 - Should look through to get a good quick comparison to Rebol: http://www.cis.upenn.edu/~matuszek/Concise%20Guides/Concise%20Rebol.html

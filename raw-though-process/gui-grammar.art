@@ -1,3 +1,6 @@
+;; TODO: More ideas in the 'Styles' section of http://www.rebol.com/docs/easy-vid.html
+
+
 ;; Automatically creates UPPER_CASE token for each keyword.
 keyword
   layout
