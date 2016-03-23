@@ -679,6 +679,12 @@ design-thought [
 - everything is an anonymous function. It's just that some of them have alias
 - eventually, create different docs for 'translate Java to anonlang' or 'learn anonlang from Java'
 - Add runs off the main thread by default. Then, all UI updates would go to UI thread.
+- Should there be a 'text.is-palindrome' functionality built in the language?
+  - Pro: Possibly less focus on that for dev interviews
+  - Con: Larger language, larger perceived API bloat, possibly not used much, different requirements (like, whether or not whitespace and punctuation matters)
+  - Hmm, maybe don't have text.is-palindrome, and don't have function for fizzbuzz, and other interview questions. But, make them really easy syntax to do with the regular language.
+
+
 
 
 

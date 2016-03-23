@@ -60,7 +60,7 @@ There are just a few general rules to the language. Also, it's just a small down
     loop count in 1..5 [ output count ] ;; Loop with reference to iteration
     loop node in nodes [ visit node ] ;; Loop over each item
     loop ch in 'hello' [ output ch ] ;; Loop over each character
-    loop wd in 'hello world' by r'\w' [output wd] ;; Loop over word tokens
+    loop wd in 'hello world' by r'\w' [ out wd ] ;; Loop over word tokens
     loop is-wait [ sleep 500 ] ;; Loop until is-wait is false, aka while is-wait is true
 
     loop-parallel [] ;; When order of calls doesn't matter.

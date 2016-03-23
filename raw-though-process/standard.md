@@ -1,0 +1,3 @@
+- forward slash as directory separator and the other similar uses that we can use for it or interpret it, like as tags with order not mattering. Should order matter?
+  - It seems that slash can have better use of tags than periods accessing inards of objects. Would it be `Math/PI` then, rather than `Math.PI`? The period is the most common though. But, slash is getting usage in Rebol/Red, but it would be overloaded with division also, especially weird when having something looking like `/game /rpg /action /card`. But, at least those values may not be number aliases, but one could potentially be, then what? Make it a set instead {game rpg card action}?
+-
