@@ -448,28 +448,6 @@ design-thought [
   - Hmm, actually, if we follow the performance doesn't matter paradigm, then all we would have to specify that a task is a background task? Or, perhaps that could be done automatically as long as it isn't related to UX?
   - Dev shouldn't have to worry about threads? Processes may be important though because they would be used as encapsulation
 - Every object has a config attribute? Kinda like a builder(?) so that new classes wouldn't have to be created? This is already implicit?
-- Re: 'keyword-input'
-  - Final compiled version of input keyword may has argument list in scope.
-
-            alias my-function [
-              input a b c
-            ]
-            alias my-function [
-              input [a b c]
-            ]
-
-  - This makes more sense so that we can do 'input.a' to distinguish it from other local variables.
-  - What about functions inside of functions. Need a 'super.input.a'?
-
-            alias my-super [
-              input a b c
-              alias my-sub [
-                input a b c
-              ]
-            ]
-
-- There are named inputs, so there should also be named outputs!?
-  - By default, just use the local variable name? But, then that would break encapsulation.
 - Re: 'keyword-art-lang'
   - Perhaps most files would end with '.art'. Though, if more explicit formatting was wanted, then we could also do '.art-style', '.art-layout', '.art-view', '.art-task', '.art-model'. Though, that meta might instead appear in the actual file name rather than the extension.
 - Since Anonlang libraries would be plugin systems. Perhaps make it easy to specify which is used in the config.
@@ -485,10 +463,6 @@ design-thought [
           ]
         ]
 
-- Re: 'keyword-input' 'keyword-output'
-  - Since input and output keywords would be used very often, should they be shortened to just 'in' and 'out'. It would be nice to have half to type, though would it be more confusing for new programmers?
-    - Hmm, Java kinda has a System.out and System.in that can be written to and read from.
-    - Note: Doing this would mean overloading 'in': inputs and checks in a loop.
 - Create Python function for get-html-from-anonlang
   - Though, should probably be in JavaScript or PHP to get easier Anonlang penetration to web.
   - Possible to go to DOM directly instead of HTML, then DOM?
