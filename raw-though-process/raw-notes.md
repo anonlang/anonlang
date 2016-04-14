@@ -147,7 +147,6 @@ goal [
 design-thought [
   I will use Anonlang for everything. If there is a use-case that I can't do in less than five minutes, then Anonlang may have that ability added
   question-everything [
-    Does text need to be concatenated with `+`? For example, Haskell uses `++` and PHP uses `.`
     Do we need to use IEEE data-types in Anonlang? We could compile to that for necessary hardware
     Is object-oriented design the ultimate paradigm to keep?
     Is a null value needed?
@@ -801,16 +800,19 @@ Design patterns are overrated. Just provide an interface for things that may cha
   - Allow users to help grow language
   - Short words work well if you choose them well
 
-- Rascal lang: http://www.rascal-mpl.org/
-  - http://www.rascal-lang.com/
 - Good: http://lukeplant.me.uk/blog/posts/less-powerful-languages/
 
-- Re: 'language-awk'
+- Re: 'language-awk' 'awk-lang'
   - Associative array. Awk is great case study and format/pattern/language
     - Pattern -> Action format
     - New Anonlang type: `type pattern-action`
-- Re: 'language-erlang'
+- Re: 'language-erlang' 'erlang-lang'
   - http://c2.com/cgi/wiki?ErlangCodeExamples
+- Re: 'language-rascal' 'rascal-lang'
+  - http://www.rascal-mpl.org/
+  - http://www.rascal-lang.com/
+- Re: 'language-rust' 'rust-lang'
+  - 8-bit unsigned int is `u8`, 32-bit float is `f32`
 
 - TODO:
   - Read http://lambda-the-ultimate.org/node/3680

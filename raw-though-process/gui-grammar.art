@@ -24,7 +24,7 @@ keyword
       style
         grid
         list
-    heirarchy-view ;; Aka, breadcrumbs
+    hierarchy-view ;; Aka, breadcrumbs
 
     input-view
       email-input-view
@@ -43,6 +43,7 @@ keyword
       date-select-view
         style
           day
+          week
           month
           year
       number-select-view
