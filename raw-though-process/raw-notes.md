@@ -1,6 +1,27 @@
-Major concepts to resolve:
+Anonlang is a DSL-creating language. Art can be the general-purpose language/os/project if we really want to get into that.
 
-To answer these, I first have to figure out what exactly I want Anonlang to be used for. Really, what? General purpose or specific application? At least layouts and code. Easy memory model?
+For both languages, the main driving point is ease of development for end-users. Space and time constraints on today's computer will NOT be any of the main driving points. The target systems for these languages will be future computers with vastly more memory and processing power.
+
+
+
+Major concepts to resolve for a DSL-creation language:
+
+- The minimal number of features out of the box:
+  - ability to define patterns (keywords/symbols)
+  - ability to define actions for those patterns
+  - ability to set pattern precedence/priority/order? (perhaps implicitly)
+  - ability to run code?
+
+Sample syntax:
+
+    PATTERN ACTION
+
+TODO: Write how Java syntax would be done this way.
+
+
+
+
+Major concepts to resolve for a general-purpose language:
 
 - *Syntax to pass arguments to functions.*
 
@@ -656,7 +677,25 @@ design-thought [
   - Pro: Possibly less focus on that for dev interviews
   - Con: Larger language, larger perceived API bloat, possibly not used much, different requirements (like, whether or not whitespace and punctuation matters)
   - Hmm, maybe don't have text.is-palindrome, and don't have function for fizzbuzz, and other interview questions. But, make them really easy syntax to do with the regular language.
+- When using OOD, rather than calling things `class`, a more active term can be used like `util` or `value` or `model` or `singleton`. Hmm, but doing that could also make changing responsibilities later more difficult.
+- Re: 'if-syntax' 'if-else-syntax' 'switch-syntax'
+  - Basically, no else keywords.
 
+        if
+          X < 5: do something;
+          X > 6: do something;
+          : do something else;
+
+  - Also, no repeating, so it would be:
+
+            if x:
+              < 5: do something
+              > 6: do something
+              :do something else
+
+  - Always do all of the ifs cascading? Not like a switch statement?
+  - The above construct could be like an 'or'. And, each time 'if' is written, that could be the 'and'.
+  - Hmm, seems similar to format of recursive format or guard clauses.
 
 
 

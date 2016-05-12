@@ -13,7 +13,7 @@ anonlang-keywords [
   config [name, description, version]
   goto ;; reserved
   group
-  import
+  import ;; use
   in ;; input
   loop
   out ;; output
@@ -55,6 +55,7 @@ allowed-verbs [
   hide
   open
   remove
+  run [maybe: start] [not: execute]
   select
   show [not: display]
   maybe-not [
