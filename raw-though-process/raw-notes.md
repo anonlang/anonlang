@@ -696,6 +696,12 @@ design-thought [
   - Always do all of the ifs cascading? Not like a switch statement?
   - The above construct could be like an 'or'. And, each time 'if' is written, that could be the 'and'.
   - Hmm, seems similar to format of recursive format or guard clauses.
+- If it really is the case that these languages shouldn't worry about time/space, then do we really need a lifecycle? All programs could just run forever without effecting anything else? The apps would just be either hidden or shown.
+  - Hmmm, maybe we are just too used to the idea of stopping programs and shutting down computers, at least for now.
+  - One use case where a program may want to know the status of show/hide is games that require active input, so that they could pause-automatically when going to another task. And, some games wouldn't care about that. Should no games care about that? They should just do 'p' or 'esc' to pause if that's what the user wants?
+  - Start and stop lifecycle is still good because some scripts should only be running during certain tasks. And, it is good to have the ability to have different hotkeys for different apps/games.
+  - Hmm, at least electricity-consumption is still a thing, though perhaps we don't need to worry about that for the purposes of designing a language for the future.
+  - Another use case for the start/stop lifecycle is for having physical machines not working 24/7.
 
 
 
