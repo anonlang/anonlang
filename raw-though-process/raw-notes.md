@@ -702,7 +702,19 @@ design-thought [
   - Start and stop lifecycle is still good because some scripts should only be running during certain tasks. And, it is good to have the ability to have different hotkeys for different apps/games.
   - Hmm, at least electricity-consumption is still a thing, though perhaps we don't need to worry about that for the purposes of designing a language for the future.
   - Another use case for the start/stop lifecycle is for having physical machines not working 24/7.
+- There should be no code in the format:
 
+        int max = 0;
+        int sum = 1;
+        if (sum > max) { max = sum; }
+
+  - The preferred code would be:
+
+            max = maxOf(max, sum);
+
+  - The later looks cleaner. There is little/no regard for extra time required to do the extra assignment.
+  - Unfortunately, comparison operators are still needed for other uses..
+-
 
 
 
