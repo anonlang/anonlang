@@ -714,14 +714,48 @@ design-thought [
 
   - The later looks cleaner. There is little/no regard for extra time required to do the extra assignment.
   - Unfortunately, comparison operators are still needed for other uses..
--
+- Re: 'syntax-anondata', but really it's should be suitable for Artlang
 
+        [
+          key: value,
+          arr-key: [ v1, v2, v3, v4 ],
+          ob-key: [
+            a: 1,
+            b: '2',
+            c: [3]
+          ]
+        ]
+- When creating data, allow spacing twice to auto-insert a colon. Then, a single backspace at that point will delete the colon. And leave the double-space?
+- Re: 'Everythinger'
+  - Starts with no features, some plugins are there but must be manually enabled. Make it easy to create new plugins of minimal size and shortcuts to each of them.
+  - The Everythinger app would have a recommender engine in it that could work very similar to StumbleUpon.
+- Use forward slash as 'tag'. Example: /game text-here to do search within games tag. Flat hierarchyless structure. Windowskey+space by default is full system. Search. App/alt-+space is app search. Ctrl+space is third party tool search, probably non-app stuff. All app shortcuts maybe have alt/app key.
+  - /game/rpg and /rpg/game would return the same results with tags of 'game' and 'rpg'
+  - A period could maybe be used to access an inner attribute. Maybe another symbol could be used for simple reflection, maybe tilde, but not all international keyboards have easy access to that key. Add that support as plugin? Lesser used Language keyword and symbol support as plugins?
+- Grammar
 
+        Requires named function.
+        Pattern action output
+        Pattern definition
+        Pattern arguments
+        Pattern input
 
+        Need to think about how to get anonymous function too.
+        Pattern input output
+        Input pattern output
+        Output pattern input
+        Input output
+        Output
+        Pattern output input
+        Pattern output
 
+        C struct is type output pattern
+        Java is descriptors pattern input output
+        Lisp is pattern input input
 
-
-
+  - Use p for pattern? Or Pat? Or alias? Or as? As maybe too close to English conflicting. Or f for function to make transition easier? Also f is much easier to type. Easier that fun also, but need to test visibility and readability.
+- Why not just have the graph data structures just automatically choose the best algorithm instead of having dev having to choose one themselves? This should also be easier in Artlang because of the fewer 'front-end' choices.
+- - GitHub has the [almost] perfect platform for websites. Devs can easily use Markdown and git-push, non-techies can use 'edit' button.
 
 
 

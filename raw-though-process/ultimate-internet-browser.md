@@ -21,6 +21,14 @@ Login page
 
 
 
+## Email / Identity
+
+An email provider could have a unique email address for each third-party site and re-use those for multiple users? Possibly need to attach unique randomly generated ID for user also.
+
+So, eventually, we could/should login into all sites via email provider, though that provides a lot of power to the email provider, thus it should possibly be open source and distributed, with optional capability of having different hosts.
+
+
+
 ## More Info
 
 - Good

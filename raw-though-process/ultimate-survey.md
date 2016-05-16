@@ -1,0 +1,1 @@
+- Survey: Just a few questions [1-7] that can be answered in less than 10-20 seconds. The percentage results are automatically released two weeks after the test is taken, and only those that have voted can see the results. Cumulative reports with specific numbers can then be purchased.
