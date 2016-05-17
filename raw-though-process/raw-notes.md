@@ -696,6 +696,7 @@ design-thought [
   - Always do all of the ifs cascading? Not like a switch statement?
   - The above construct could be like an 'or'. And, each time 'if' is written, that could be the 'and'.
   - Hmm, seems similar to format of recursive format or guard clauses.
+  - Hmm, instead of 'else', we could use 'or' and 'or if'
 - If it really is the case that these languages shouldn't worry about time/space, then do we really need a lifecycle? All programs could just run forever without effecting anything else? The apps would just be either hidden or shown.
   - Hmmm, maybe we are just too used to the idea of stopping programs and shutting down computers, at least for now.
   - One use case where a program may want to know the status of show/hide is games that require active input, so that they could pause-automatically when going to another task. And, some games wouldn't care about that. Should no games care about that? They should just do 'p' or 'esc' to pause if that's what the user wants?
@@ -725,6 +726,7 @@ design-thought [
             c: [3]
           ]
         ]
+
 - When creating data, allow spacing twice to auto-insert a colon. Then, a single backspace at that point will delete the colon. And leave the double-space?
 - Re: 'Everythinger'
   - Starts with no features, some plugins are there but must be manually enabled. Make it easy to create new plugins of minimal size and shortcuts to each of them.
@@ -904,6 +906,8 @@ Design patterns are overrated. Just provide an interface for things that may cha
   - http://www.rascal-lang.com/
 - Re: 'language-rust' 'rust-lang'
   - 8-bit unsigned int is `u8`, 32-bit float is `f32`
+
+- Good: [Studying the Language and Structure in Non-Programmers’ Solutions to Programming Problems](http://alumni.cs.ucr.edu/~ratana/PaneRatanamahatanaMyers00.pdf)
 
 - TODO:
   - Read http://lambda-the-ultimate.org/node/3680
