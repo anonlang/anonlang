@@ -758,6 +758,35 @@ design-thought [
   - Use p for pattern? Or Pat? Or alias? Or as? As maybe too close to English conflicting. Or f for function to make transition easier? Also f is much easier to type. Easier that fun also, but need to test visibility and readability.
 - Why not just have the graph data structures just automatically choose the best algorithm instead of having dev having to choose one themselves? This should also be easier in Artlang because of the fewer 'front-end' choices.
 - - GitHub has the [almost] perfect platform for websites. Devs can easily use Markdown and git-push, non-techies can use 'edit' button.
+- Instead of thinking of floating-point and decimals, we could see the number decimal as a way to input for a different representation of the decimal part.
+  - Ex: Instead of a floating-point implementation, we could use a 'fraction' format with numerator and denominator.
+- Instead of a for-loop, when could be used
+
+        when:
+          0: break
+          else: do something
+
+        loop:
+          0: break
+          else: do something
+
+- Meh to using semi-colons as comment syntax. Semi-colons can be more useful in other ways and don't need to overload for more overhead, maybe.
+- MUP: Markup Language
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
