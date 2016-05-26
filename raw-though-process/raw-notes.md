@@ -757,7 +757,7 @@ design-thought [
 
   - Use p for pattern? Or Pat? Or alias? Or as? As maybe too close to English conflicting. Or f for function to make transition easier? Also f is much easier to type. Easier that fun also, but need to test visibility and readability.
 - Why not just have the graph data structures just automatically choose the best algorithm instead of having dev having to choose one themselves? This should also be easier in Artlang because of the fewer 'front-end' choices.
-- - GitHub has the [almost] perfect platform for websites. Devs can easily use Markdown and git-push, non-techies can use 'edit' button.
+- GitHub has the [almost] perfect platform for websites. Devs can easily use Markdown and git-push, non-techies can use 'edit' button.
 - Instead of thinking of floating-point and decimals, we could see the number decimal as a way to input for a different representation of the decimal part.
   - Ex: Instead of a floating-point implementation, we could use a 'fraction' format with numerator and denominator.
 - Instead of a for-loop, when could be used
@@ -768,10 +768,18 @@ design-thought [
 
         loop:
           0: break
+          isValid: do something
           else: do something
 
 - Meh to using semi-colons as comment syntax. Semi-colons can be more useful in other ways and don't need to overload for more overhead, maybe.
 - MUP: Markup Language
+- Perhaps a 'Math.eval(...)' function that could only return a number or type of error. Hopefully, no way to abuse that for security.. well, there might just be some really long process running.
+  - Is it annoying to have to do that every time?
+  - Possibly a `.eval(math, ...)`, then 'math' can be substituted for any parsing program, perhaps `.eval(c, ...)` and `.eval(c++, ...)`
+  - Should we allow condensing to `math(...)` or `c++(...)`? Hmm, but don't want to get that confused with regular functions that might just happen to have the same name, especially for eso-langs. Then again, the creator of those can just rename them so something like 'rust-lang' and 'd-lang' and 'dart-lang' maybe. But, if that happens, then it wouldn't be consistent with with any languages that don't have 'lang' after it. Meh.
+- If we want to call system function using the dot syntax, i.e. `.function-name(...)`, then that seems very similar to jQuery's syntax using `$.functionName(...)` and Underscore.js's syntax using `_functionName(...)`.
+- There should be no external tools necessary. The language should include a way to 'pre-process' things, and ability to have code custom checked at compile-time.
+
 
 
 
