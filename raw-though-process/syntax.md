@@ -13,7 +13,7 @@ For each toggle-able feature, there may have to be a token for it:
 8. Should attribute be singleton or have multiple instances?
 9. Whether or not to store to main memory or local memory? (keyword-volatile)
 10. Provide hint to compiler for inlining? (keyword-inline)
-10. Tooling support
+10. Tooling support (not necessarily 3rd party tool, it could be pre-processing tool/code)
   1. Note when a function should be overriding a parent function. (keyword-override)
   2. Note when a function should be overridden by a child function. (keyword-abstract)
   3. Note when an attribute should be null or not. (keyword-nullable, keyword-nonnull)

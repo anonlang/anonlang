@@ -201,7 +201,7 @@ design-thought [
 - Do some more haskell (and other functional language) practice
 - Do more general-game programming to see if that can be beneficial to the core.
 - Learn: Why does Java have reflection? Why was it added? Find out more than it's a nice feature for analyzing and manipulating code. Was it needed because of limitations of the language?
-- See just how similar Groovy is to the syntax I have come up with in `syntax.txt`.
+- See just how similar Groovy is to the syntax I have come up with in `syntax.md`.
   - Also similar: [ceylon-lang](http://www.ceylon-lang.org/), and [language design FAQs](http://www.ceylon-lang.org/documentation/1.1/faq/language-design/)
 - Start building on top of [LLVM](http://llvm.org/) (or similar) for simpler cross-CPU support.
 - Read https://en.wikipedia.org/wiki/List_of_programming_languages_by_type and https://en.wikipedia.org/wiki/Category:Declarative_programming_languages
@@ -779,6 +779,69 @@ design-thought [
   - Should we allow condensing to `math(...)` or `c++(...)`? Hmm, but don't want to get that confused with regular functions that might just happen to have the same name, especially for eso-langs. Then again, the creator of those can just rename them so something like 'rust-lang' and 'd-lang' and 'dart-lang' maybe. But, if that happens, then it wouldn't be consistent with with any languages that don't have 'lang' after it. Meh.
 - If we want to call system function using the dot syntax, i.e. `.function-name(...)`, then that seems very similar to jQuery's syntax using `$.functionName(...)` and Underscore.js's syntax using `_functionName(...)`.
 - There should be no external tools necessary. The language should include a way to 'pre-process' things, and ability to have code custom checked at compile-time.
+- To have the 'layout' context, there should probably be a library imported. Perhaps, 'use gui' or 'use layout' written somewhere in the app.
+  - So, what does the minimal language support with no imports?
+    - Yes: loop, start, stop, number, text, if/switch, comparison, input, output, group/array/bag/set/map, attribute/function/variable, const/read-only,
+    - Basically, things to build a simple console/terminal program? Like, FizzBuzz
+    - No math? Or, maybe just the basic 4 and modulus?
+    - If there is so much stuff by default, then may not be so good for embedded systems? But, then again, we may be assuming a future world without needing to worry about time/space. But, in that case we could just include everything... Hmm, maybe we should, but then just automatically have a minifier like ProGuard to run when compiling the code.
+- No decimal numbers? All numbers in 'scientific notation'-ish, basically a number for value and number for where decimal place might be added.. Doing something like 'num = 3.14' would just be syntactic sugar for something like 'number(314, 2)', where 2 means two numbers after the decimal. 'number(20, 3)' would be 0.020. 'number(20, -3)' would be 20000. Does this really make intuitive sense for somebody new looking at it for the first time? Probably no method of this would be intuitive, but if it is just implementation detail, then end-dev would never see it.
+  - Another way to think of 'number(x, n)' is to assume that x is regular integer with implicit decimal at the end, and 'n' would be how many places to move the decimal left/right. Basically, opposite of the above way.
+- In terminal, to start app, the command would be `start app-name`
+  - It seems that we are trying to prefer 'start' more than 'run' in as most places as possible. Hopefully, all?
+  - But, in order to work with other 'legacy' systems, we would need a unique name before that. Ideas: asdf, alang, do, art, `app start app-name`
+- When overriding functions, there are a few different ways that we could do this:
+  - super function is always called before sub function (or, vice-versa)
+  - sub function must explicitly call super function in order for it to be called
+  - super function can itself define whether its code should be called first/last or don't care, then sub function code would just be done in the middle
+  - super and sub function can set priority for each of their code, then they will be automatically called in increasing order
+- Numbers in Artlang
+
+        number [
+          int-number ;; integers only, integer rounding
+          float-number [
+            style [
+              out-format [
+                fixed [in count-decimal-places]
+                scientific
+                engineering
+              ]
+            ]
+          ]
+        ]
+
+- Idea: Constructors not needed if we just have default values?
+- Perhaps a context group for 'compile-time' code. Everything else by default would be all 'run-time' code.
+  - Along with checking input of functions, this could also be used for tests. Or, tests could be a separate context group.
+  - Allow way to generate run-time code programmatically during compile-time.
+- Don't use `^` key as major syntax because it doesn't work for some/many European keyboards.
+- Perhaps have tools to automatically convert any 'group' to 'json'? This would just be put under legacy/support? Because eventually we wouldn't want to have to support that and we would just want people to use Anonlang directly in all cases. So, then there should definitely be a tool for json to anonlang.
+- A good frontend way to do databases and migrations.
+- If there is int32, int 64, and int 128 data types in the language, then maybe also support 'int32+' to represent 32 bits or over? Meh, probably not. If 32 bits is declared, then that is probably enough.
+  - Should regular int be allowed to grow? Maybe it would depend on the computer being worked on? Meh.
+- Allow creation of 'data types'. Hmm, in use that would be just like regular groups and/or objects.
+- By default, end-users would be programming in art4? There would be an compiler written in art3 to transpile art4 to art3. There would be a compiler written in art2 to transpile the art3 to art2. Or, instead of art2, the other compiler might just go to C or LLVM or Java or Java byte code.
+- Allow everything to be set to null? Or, just allow an 'uninstantiated' state?
+- Any number bases not base 10 or base 16 would require a library. What about for setting colors (like, RGB555 and ARGB8888)? In that case, that color library can be using the other number base library.
+- Extra Feature Idea: An '@debug' annotation for functions to output the passed arguments and return values. Possibly a '@debug-full' to output to log each instantiation line or maybe even all lines. Perhaps '@debug-full' or regular debug would take a parameter that defines what it should do and whether or not it should only be done for debug builds (true by default).
+- Sample function declaration syntax:
+
+        function-name in-vars out-vars [
+          out a, b
+        ]
+        ;; Demonstrating multiple-in multiple-out, default-in, default-out, named-in, named-out, named-return
+        double-it a:int b:int c:10, a2:int b2:int c2:20 [
+          out a2:a * 2, b2:b * 2
+        ]
+        ;; Named output is automatically returned
+        triple-it a:int, a:int [
+          a = a * 3;
+        ]
+        ;; Variable type is declared in function declaration
+        triple-it a:int, b:int [
+          b = a * 3;
+          ;; b = 'text' ;; Not allowed because type is already declared
+        ]
 
 
 
@@ -800,21 +863,44 @@ design-thought [
 
 
 
+## Scope Types / Context Types
 
+view [] OR layout []? maybe not layout [] or maybe both. Shouldn't depend on landscape of portrait, but just width. Probably layout rather than view or gui. Maybe.. Check Google Ngram.
 
+        layout [
+          default [ ... ]
+          sw-640 [ ... ]
+          sw-1048 [ ... ]
+        ]
 
-## Scope Types
-
-view [] OR layout []? maybe not layout [] or maybe both. Shouldn't depend on landscape of portrait, but just width.
 animation [], need a way to designate serial and parallel. This scope might be subclass of action. Maybe can designate with 'worker-thread' (random thread from pool), 'network-thread', serial-thread'
 style [], possibly includes theme and color, and dimensions? Dimensions maybe sub scope on style. Or, maybe more like CSS/SASS/LESS
 action [] OR task []? maybe not task []
 text [] for i18n. Maybe text-en[], text-cn[]
 
+        text [
+          default [
+
+          ]
+          us-en [
+
+          ]
+          uk-en [
+
+          ]
+          cn-ma [
+
+          ]
+        ]
+
+compile-time [], run-time []
+background-thread []
+raw [] ;; Things that aren't compressed
+
 Maybe filename can be used so that don't need to explicitly define it in the file?
 Also action scope could be default.
 
-Also, maybe in same directory style as Android.
+Also, maybe in same directory style as Android. Meh. Android directory structure keeps changing a lot. I also already have some thoughts in the 'ultimate-os' file.
 
 This scoping gets past having different languages, though each scope may have a different DSL, like don't need to for diffuse folly say view in the view scope, while other scores would need it. All should be very similar setup/syntax though.
 
