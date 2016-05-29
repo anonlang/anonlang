@@ -15,7 +15,7 @@ stop [
   ;; Do nothing
 ]
 
-main page [
+main app.page [
   cal calculator [
     input-output-view: layout.input-text-view
     output-output-view: layout.output-text-view

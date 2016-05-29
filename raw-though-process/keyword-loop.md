@@ -22,6 +22,10 @@ Perform a task multiple times or in sequence.
 
     loop is-wait [ sleep 500 ] ;; Loop while is-wait is true, aka until is-wait is false
 
+    loop nums [ ... ] ;; Default access to each item in nums is 'it'. Can't access outer loop item unless it is renamed.
+
+    loop num in nums [ ... ] ;; Set variable name for index to 'it'
+
 
 
 ## Discussion

@@ -1,23 +1,19 @@
-Anonlang is a DSL-creating language. Art can be the general-purpose language/os/project if we really want to get into that.
-
-For both languages, the main driving point is ease of development for end-users. Space and time constraints on today's computer will NOT be any of the main driving points. The target systems for these languages will be future computers with vastly more memory and processing power.
-
-
-
-Major concepts to resolve for a DSL-creation language:
-
-- The minimal number of features out of the box:
-  - ability to define patterns (keywords/symbols)
-  - ability to define actions for those patterns
-  - ability to set pattern precedence/priority/order? (perhaps implicitly)
-  - ability to run code?
-
-Sample syntax:
-
+anonlang: [ ;; DSL-creating language
+  todo [
+    - ability to define patterns (keywords/symbols)
+    - ability to define actions for those patterns
+    - ability to set pattern precedence/priority/order? (perhaps implicitly)
+    - ability to run code?
+    - Write how Java syntax would be done this way.
+  ]
+  syntax [
     PATTERN ACTION
+  ]
+]
 
-TODO: Write how Java syntax would be done this way.
-
+artlang: [ ;; general-purpose language
+  The main driving point is ease of development for end-users. Space and time constraints on today's computer will NOT be any of the main driving points. The target systems for these languages will be future computers with vastly more memory and processing power.
+]
 
 
 
@@ -25,60 +21,9 @@ Major concepts to resolve for a general-purpose language:
 
 - *Syntax to pass arguments to functions.*
 
-        ;; Different paradigms to try
-        pattern action
-        input function output
-        function input output
-
-
-        ;; What about input?
-        row views
-        row text text-input button [foo bar]
-        alias list-row row [in views|views|out views]
-        alias m-in-row row [in * | foo bar bax | out * ] ;; Possibility for template without defining strict inputs and replacements?
-        alias z-in-row row [in | foo bar bax ]
-        row [in views|views|out views] [text text-input button] ;; to call?
-        list-row [text text-input button] ;; Same as above
-        row [in * | foo bar bax | out * ] [text] ;; to call?
-        row [in | foo bar bax ] [] ;; to call?
-        z-in-row [] ;; Same as above
-
-        ;; When there is the 'in' keyword, it doesn't evaluate until later. What about functions with no inputs? Either use lazy or 'in' with no params. 'none' keyword? Nah, maybe blank is better.
-        ;; 'out' above doesn't have println because don't mix code and layout
-        ;; comma-separated output
-        ;; to have anonymous function/lambdas just need brackets to show precedence
-
-
-        ;; What about default arguments and restricting input and output types?
-        alias set-profile [in name:text, address:text='', height-in-cm:number| [; Do something;] ]
-        max 3 4 min [5 6]
-        log [max 3 4 min [5 6]] ;; Perhaps not the same as `log max 3 4 min [5 6]`
-        alias max:comparable [ in numbers+:comparable | var m=numbers.0, numbers.reduce-parallel [it > m ? m = it] | out m ]
-
-        ;; So, [] means calculate, unless there is the 'in' keyword in there?
-        ;;    What about a long log?
-        ;; So, [] belongs strictly to the alias to its left
-        ;; So, no [] means following symbols on same line are inputs to call the alias?
-        ;;     What about configs for an alias? (lazy, once, static, )
-        ;; Default is no hardcoded types. Hardcoded types can be added with colon then the type
-        ;;     To have a better type inference, could be useful to have a table of different functions that each type can do.
-
-
-  - Prefer not having to wrap them with brackets because the function body may already be wrapped with brackets.
-  - Prefer not to use the shift key. So, that would limit the curly brace and parenthesis.
-  - A test for intuitiveness. Ask a non-programmer what some code does.
-  - Many people didn't care for Python's required whitespace. On the other hand, many people (less?) like the required similarity of code.
-  - The biggest hurdle for compiler is to know
-    - When the input parameters stop
-    - Is a function passed in as a function pointer or does it take some of the following input parameters?
-
-                ;; math.min might only take two inputs?
-                x = math.max 2 3 4 math.min 5 6 7
-
   - Idea: If the number of inputs were fixed (easy to do), then one of the problems would be solved. But, this idea would prevent variable amount of arguments, which would be a nice feature. Though, it can probably be proven that an extra syntactic token would be required just to support variable-length arguments. Java originally required arbitrary-length arguments to already be wrapped in a collection, but later added varargs because 'usefulness'(?). It really is just syntactic sugar. And, many people do like sugar.
     - Hmm, one reason Java may have added varargs sugar syntax was because creating arrays were difficult. Since it is simple in Anonlang, perhaps the varargs syntax isn't needed. Just us group instead.
   - Idea: A syntax could be used for function as a argument, like calling it 'lambda' or putting an asterisk before the name (like in C). But, I don't care for either of those ideas because it introduces more unnecessary complexity to developers. Prefer complexity done once in the backend rather than new requirement/complexity for each developer using the API.
-  - Idea: Functions can be passed as arguments, but they never evaluate inline when they are the arguments. Meh. I would also prefer not to limit devs. I'm sure there is a better way, but it just hasn't been thought of yet.
   - For varargs, Ceylong-lang handles this by accepting 'Iterable' parameter. The syntax is asterisk after the type to mean 'zero or more' and a plus after the type to mean 'one or more'. Ex: 'alias max [ input numbers+ ]' [source](http://ceylon-lang.org/documentation/1.2/reference/structure/parameter-list/#variadic_methods_and_varargs)
 
         ;;
@@ -100,9 +45,6 @@ Major concepts to resolve for a general-purpose language:
             output max a > b ? a : b max c.0 c.[1:]
           ]
         ]
-
-  - Are defining function body and scoping arguments mutually exclusive? Aka, are they never needed or used in the same statement?
-  - In Groovy/Gradle, it can be complicated when seeing `foo = 4` and `foo 4`. Though, would it be better to have `foo [4]` to show explicit intent rather than `foo 4`? Or, maybe it would just be better to not have same names.
 
 - *Syntax to end statements or have multiple statements per line*
   - Easiest solution is to not allow multiple statements per line. Thus, an extra trivial 'semi-colon' token wouldn't be required. Hmm, though in languages not requiring the semi-colon ending, the newline is used as the token. Well, at least in the later case there is less typing overall even though it would look the same to the compiler.
@@ -843,10 +785,13 @@ design-thought [
           ;; b = 'text' ;; Not allowed because type is already declared
         ]
 
+- Idea: All groups/blocks are 'lambdas'.
+- loop idea
 
+        loop * a it = it_index ;; Set each element in the group to be 1, 2, 3, 4...
+        loop a a[it_index] = it_index ;; same as above
 
-
-
+-
 
 
 
