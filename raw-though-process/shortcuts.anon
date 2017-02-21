@@ -10,6 +10,7 @@ modifier-keys [
 'shift'
 ]
 
+;; todo: possibly don't define any defaults for 'app' key, allow app itself to define usage.
 mode:insert-default [
 global [
 'app+esc' 'app-stop'
@@ -31,8 +32,19 @@ global [
 'meta+t' 'stop'
 'meta+v' 'add'
 'meta+x' 'remove'
+'meta+f1' 'show-toggle-app-menu'
 ]
 
 ]
 
-mode:command-default
+mode:command-default [
+;; Really depends on the app what commands are most useful, but default ideas can be added below for specific apps
+app-mail []
+app-editor-text []
+app-editor-image []
+app-editor-video []
+app-editor-audio []
+app-browser [] ;; note: same for internet and local
+app-calendar []
+app-editor-spreadsheet []
+]
