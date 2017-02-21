@@ -1,0 +1,38 @@
+key action notes
+'enter' 'select-action'
+'esc' 'cancel-action' 'too standard to change'
+f1, show-element-help, don't need f1 for show-app-help because it is prime real location for useful feature that will be used more often and a gui help button may be used for show-app-help instead
+
+modifier-keys [
+'app' 'ctrl' 'control' 'command'
+'meta' 'alt'
+'os' 'windows-key' 'apple-key'
+'shift'
+]
+
+mode:insert-default [
+global [
+'app+esc' 'app-stop'
+;;'app+0' 'app-select-toggle-element-all' ;; Doesn't really make sense yet.
+'app+1' 'app-select-toggle-element-1'
+'app+2' 'app-select-toggle-element-2'
+'app+3' 'app-select-toggle-element-3'
+'app+4' 'app-select-toggle-element-4'
+'app+5' 'app-select-toggle-element-5'
+'app+6' 'app-select-toggle-element-6'
+'app+7' 'app-select-toggle-element-7'
+'app+8' 'app-select-toggle-element-8'
+'app+9' 'app-select-toggle-element-last'
+'meta+a' 'highlight-all'
+'meta+c' 'copy'
+'meta+f' 'find'
+'meta+n' 'new'
+'meta+r' 'start'
+'meta+t' 'stop'
+'meta+v' 'add'
+'meta+x' 'remove'
+]
+
+]
+
+mode:command-default
