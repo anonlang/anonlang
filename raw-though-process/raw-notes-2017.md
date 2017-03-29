@@ -6,3 +6,4 @@ It would be nice if the interpreter was able to 'skim' all the top-level names s
 It would be nice if we had the functionality of a full language in each filetype (like Gradle has with Groovy-lang).
 - So, top-level can do full-language stuff, then each closure/content would be dependent on what the content or what it is for.
 - possible-con: Maybe don't want to interpret any data in a file, so this would mean creating a blank closure, which may be considered boilerplate even if it is short (maybe just enclosed in braces or first line containing something like `[data]`).
+  - Of course, there would be a 'safe' way of calling all files to look at them, regardless of what context they have.
