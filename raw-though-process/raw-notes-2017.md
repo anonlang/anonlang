@@ -43,10 +43,15 @@ What if every function in code had an implicit input/output (standard IO)
     - A syntax that doesn't use 'shift-key' may be easier.
 - Need easy syntax to get arbitrary inputs
   
-  Syntax for 'context' is maybe `/`.
-  - This is familiar for people typing in file paths or web paths. Maybe too similar since it would be used slightly differently? Maybe close enough usability.
-  - Key difference may be that `/place/time` would be the same context as `/time/place`.
-    - What if `/game/game`? Same as `/game`? Allow the meta? Provide an error?
-  - Ex: `/place.usa/time.yesterday`, `/time.2016`, `/time.from.2016-01-01.to.2016-12-31`
+Syntax for 'context' is maybe `/`.
+- This is familiar for people typing in file paths or web paths. Maybe too similar since it would be used slightly differently? Maybe close enough usability.
+- Key difference may be that `/place/time` would be the same context as `/time/place`.
+  - What if `/game/game`? Same as `/game`? Allow the meta? Provide an error?
+- Ex: `/place/usa/time.yesterday`, `/time.2016`, `/time.from.2016-01-01.to.2016-12-31`, `/time/2016`
+  - Maybe the `.` syntax here would be like calling a method/function/macro and maybe it would be expanded in the context or maybe it would just be used to narrow output (like a 'find').
+- If there was only one 'usa' context, then maybe shouldn't have to also type in the 'place' context for it to be understood.
+- If there were multiple 'doc' context, then maybe all types would be shown in some order (alphabetical, usage, time).
+- What type of data-structure for O(1) access to these different contexts?
+  - If data was copied in multiple places, then it would be easy. But, maybe a better way? Would also need to keep them all in sync. Hmm, maybe just a pointer copied in multiple places.
   
   
