@@ -66,4 +66,6 @@ Syntax for 'get' is maybe `.`.
 - Where `|` passes input left-to-right, `=` passes input right-to-left
 - `object.value = 42` vs `42 | object.value`
 - What if `1 | value = 2`?
-
+- I like left-to-right because that is how English is read, but don't want to have to use the shift-key and stretch to the pipe-key. Also, some keyboards make the pipe-key harder to reach.
+  - Hmm, `>` kinda shows direction, but maybe it is too overloaded with the common meaning of greater-than. So, maybe `->`, but that requires more typing. And, this is functionality that may be used a lot.
+- Experiment: `42 object.value`
