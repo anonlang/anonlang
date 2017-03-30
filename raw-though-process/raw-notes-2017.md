@@ -53,5 +53,15 @@ Syntax for 'context' is maybe `/`.
 - If there were multiple 'doc' context, then maybe all types would be shown in some order (alphabetical, usage, time).
 - What type of data-structure for O(1) access to these different contexts?
   - If data was copied in multiple places, then it would be easy. But, maybe a better way? Would also need to keep them all in sync. Hmm, maybe just a pointer copied in multiple places.
+- Another syntax idea for context would be `.` since that is kinda a similar usage.
+  - In website domains and floating-point numbers, it provides context and sub-context
+  - In traditional syntax, the `.` means 'to-access' or 'get', which may be a bit different meaning
   
-  
+Syntax for 'get' is maybe `.`.
+- Devs should never have to write the word 'get'.
+- Maybe shouldn't have to write the word 'set'.
+- If we allow something like `object.value = 42`, then maybe we should see `.` less as a getter and more as an accessor or pointer.
+
+
+
+
