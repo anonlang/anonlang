@@ -62,6 +62,8 @@ Syntax for 'get' is maybe `.`.
 - Maybe shouldn't have to write the word 'set'.
 - If we allow something like `object.value = 42`, then maybe we should see `.` less as a getter and more as an accessor or pointer.
 
-
-
+`=` is acting similar to a pipe character (`|`).
+- Where `|` passes input left-to-right, `=` passes input right-to-left
+- `object.value = 42` vs `42 | object.value`
+- What if `1 | value = 2`?
 
