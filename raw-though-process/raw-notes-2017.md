@@ -69,3 +69,18 @@ Syntax for 'get' is maybe `.`.
 - I like left-to-right because that is how English is read, but don't want to have to use the shift-key and stretch to the pipe-key. Also, some keyboards make the pipe-key harder to reach.
   - Hmm, `>` kinda shows direction, but maybe it is too overloaded with the common meaning of greater-than. So, maybe `->`, but that requires more typing. And, this is functionality that may be used a lot.
 - Experiment: `42 object.value`
+
+syntax-loop
+(similar to python example)
+``` 
+words = ['her', 'name', 'is', 'rio']
+    letters = []
+    for word in words:
+        for letter in word:
+            letters.append(letter)
+     
+words = ['her', 'name', 'is', 'rio']
+    letters = [letter for letter in word in words]
+
+letters = words.each.each ; or similar word, maybe: split, elements, items, parts
+```
