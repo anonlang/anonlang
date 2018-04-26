@@ -1,0 +1,4 @@
+
+
+2018-04-25: Don't need to use `alias` or `define` to create a new type because in small programs, it is just a lot of duplicate code.
+
