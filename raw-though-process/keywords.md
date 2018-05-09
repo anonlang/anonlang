@@ -1,3 +1,6 @@
+# Keywords
+
+<pre>
 anonlang-symbols [
   =
   ,
@@ -76,3 +79,4 @@ allowed-nouns [
   text
   view
 ]
+</pre>
