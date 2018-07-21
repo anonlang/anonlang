@@ -48,7 +48,7 @@ There are just a few general rules to the language. Also, it's just a small down
 
     Examples:
 
-    define get-time date.now.time ;; Runs `date.now.time` when variable is created
+    define get-startup-time date.now.time ;; Runs `date.now.time` when variable is created
     define get-current-time [ date.now.time ] ;; Create lazy pointer to something without running it, by adding block syntax
     define nodes node-group [
       node [ 'en', 'hello' ]
