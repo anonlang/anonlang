@@ -94,7 +94,7 @@ Though, simple apps (or scripts) don't need to worry about that:
 
     ;; A simple app
     input a
-    output 'Hello, ;a;!'
+    output 'Hello, 'a'!'
 
 
 
