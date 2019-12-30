@@ -1,10 +1,22 @@
 
 
 alias group [
+  items []
+
   alias contains [
     input g
     output
   ]
+  
+  alias each [
+    input action
+    loop items [
+      ;action it
+      ;it action
+    ]
+    output 
+  ]
+  
   alias index-of [
     input g e
     output

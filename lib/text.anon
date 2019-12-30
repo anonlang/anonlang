@@ -6,9 +6,9 @@ alias text [
 
   alias size chars.size
 
-  ;;alias letters 'abcdefghijklmnopqrstuvwxyz'
+  ;;alias lowercase-letters 'abcdefghijklmnopqrstuvwxyz'
   alias digits '0123456789'
-  ;;alias hexdigits '0123456789abcdef'
+  ;;alias hex-characters '0123456789abcdef'
   alias whitespace ' \n\r\t\v\f'
 
 

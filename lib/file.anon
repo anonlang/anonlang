@@ -53,4 +53,10 @@ alias diff [
   output
 ]
 
+alias path [ output = path ]
+alias location [ output = location ]
+alias directory [ output = directory ]
+alias name [ output = name ]
+alias contents [ output = contents ]
+
 ;]

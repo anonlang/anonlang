@@ -15,7 +15,7 @@ Some describe Anonlang as having the power of Lisp with readability elegance of 
     config [
       name 'My Minimal App'
     ]
-    alias root layout [
+    define root layout [
       text 'Hello, World!'
     ]
     show-window root
@@ -44,12 +44,13 @@ There are just a few general rules to the language. Also, it's just a small down
 
 #### Keywords ####
 
-    alias, loop
+    define, loop
 
     Examples:
 
-    alias get-current-time date.now.time ;; Create lazy pointer to something without running it
-    alias nodes node-group [
+    define get-startup-time date.now.time ;; Runs `date.now.time` when variable is created
+    define get-current-time [ date.now.time ] ;; Create lazy pointer to something without running it, by adding block syntax
+    define nodes node-group [
       node [ 'en', 'hello' ]
       node [ 'es', 'hola' ]
       node [ 'jp', 'konnichiwa' ]
@@ -93,7 +94,7 @@ Though, simple apps (or scripts) don't need to worry about that:
 
     ;; A simple app
     input a
-    output 'Hello, ;a;!'
+    output 'Hello, 'a'!'
 
 
 

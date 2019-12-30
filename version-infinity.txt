@@ -1,0 +1,8 @@
+Version infinity is more than just the language. It is the idea that the operating-system, tools, games, and protocols would all be using the same [flexible] language. There are many people with the same goal for their unique language.
+
+Other standards to add the ability for:
+- common key-bindings across all tools in an operating-system
+  - editable at global or local scope
+  - suggestions based on keyboard layout?
+- shortcuts easy to learn, shown in gui
+- common design and ux
