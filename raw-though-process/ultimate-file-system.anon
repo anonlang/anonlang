@@ -1,3 +1,7 @@
+;; WARNING: Maybe can't just blindly use UTF over ASCII. Some letters look the same and could be confusing and lead to security problems, at least on the web. 'For example, you likely can’t see the difference between Cyrillic small letter a (“а”) and Latin small letter a (“a”). If I register Cyrillic аmazon.com (xn--mazon-3ve.com), and manage to trick you into visiting it, it’s gonna be hard to know you’re on the wrong site. '
+
+
+
 ;; Hierarchal file systems have limitations for non-trivial collection of data.
 ;; Limits:
 ;; - Files don't always have a tree-like organization
