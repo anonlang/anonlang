@@ -44,7 +44,7 @@ Most common functionality, in rough order of usage:
 - configuation
 - storage (aka: cache, database)
 - show UI (also: text, image)
-- http
+- http (aka: REST, Graph QL)
     - receive
     - send
 - file (also: path, directory)
