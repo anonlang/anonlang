@@ -107,7 +107,12 @@ Most common functionality, in rough order of usage:
 - `myFunction`
 - `&myFunction`
 ## Function Lambda
-- `{ ... }
-- `() => {}
+- `{ ... }`
+- `() => {}`
 
-
+# Import Modules
+Don't really need to have syntactic difference between importing from local and remote, but could be nice to easily see a difference, and it would help with organizing code in a common structure. Which should come first: local modules or 3rd-party modules?
+- `import module-name`
+- `myModule = import module-name` or `myModule = require('module-name')`
+- `from module-name import function1, function2`
+- `import { function1, function2 } from module-name`
